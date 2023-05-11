@@ -1,0 +1,7 @@
+*.log
+*.csv
+*_files/
+reference/
+*alias
+*.pper
+*.json

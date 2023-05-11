@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Untitled</title>
+<title>2022-Applied</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -111,7 +111,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Untitled</h1>
+<h1 class="title">2022-Applied</h1>
 </div>
 
 
@@ -126,82 +126,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>rsv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"rsv.csv"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(rsv) <span class="sc">%&gt;%</span> print</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-✔ ggplot2 3.4.2     ✔ purrr   1.0.1
-✔ tibble  3.2.1     ✔ dplyr   1.1.2
-✔ tidyr   1.3.0     ✔ stringr 1.5.0
-✔ readr   2.1.4     ✔ forcats 1.0.0
-Warning message:
-“package ‘ggplot2’ was built under R version 4.2.3”
-Warning message:
-“package ‘tibble’ was built under R version 4.2.3”
-Warning message:
-“package ‘dplyr’ was built under R version 4.2.3”
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-
-Attaching package: ‘kableExtra’
-
-
-The following object is masked from ‘package:dplyr’:
-
-    group_rows
-
-
-Rows: 1374 Columns: 12
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-dbl (12): id, age, sex, bwt, smoke, atopy, fhxasth, resp, wheeze, cyan, los,...
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>spc_tbl_ [1,374 × 12] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
- $ id     : num [1:1374] 1 2 3 4 5 6 7 8 9 10 ...
- $ age    : num [1:1374] 1 2 12 9 4 3 2 12 3 12 ...
- $ sex    : num [1:1374] 0 1 0 1 0 1 0 0 1 1 ...
- $ bwt    : num [1:1374] 3 3 2 3.1 2.8 1.6 2.8 3.4 2 3.5 ...
- $ smoke  : num [1:1374] 0 1 0 1 1 1 1 1 1 0 ...
- $ atopy  : num [1:1374] 0 0 0 0 0 0 0 0 0 0 ...
- $ fhxasth: num [1:1374] 1 0 0 0 0 0 1 0 0 1 ...
- $ resp   : num [1:1374] 60 60 38 58 44 30 47 35 51 35 ...
- $ wheeze : num [1:1374] 0 1 0 2 1 1 2 1 2 1 ...
- $ cyan   : num [1:1374] 2 0 0 0 0 0 1 0 0 0 ...
- $ los    : num [1:1374] 6 5 10 5 5 8 16 4 2 4 ...
- $ mmi    : num [1:1374] 1 1 1 1 1 1 1 1 0 1 ...
- - attr(*, "spec")=
-  .. cols(
-  ..   id = col_double(),
-  ..   age = col_double(),
-  ..   sex = col_double(),
-  ..   bwt = col_double(),
-  ..   smoke = col_double(),
-  ..   atopy = col_double(),
-  ..   fhxasth = col_double(),
-  ..   resp = col_double(),
-  ..   wheeze = col_double(),
-  ..   cyan = col_double(),
-  ..   los = col_double(),
-  ..   mmi = col_double()
-  .. )
- - attr(*, "problems")=&lt;externalptr&gt; 
-NULL</code></pre>
-</div>
-</div>
 <ol type="a">
 <li>Investigate the association between age and length of hospital stay.</li>
 </ol>
 <div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">##(a)</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(rsv<span class="sc">$</span>age,rsv<span class="sc">$</span>los) <span class="sc">%&gt;%</span> print</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">##(a)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(rsv<span class="sc">$</span>age,rsv<span class="sc">$</span>los) <span class="sc">%&gt;%</span> print</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.223165</code></pre>
 </div>
@@ -209,11 +139,13 @@ NULL</code></pre>
 <ol start="2" type="a">
 <li>Establish a range of typical values for length of hospital stay for children with the following covariate profile: • Eight months of age. • Male. • No wheezing.</li>
 </ol>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>rsv <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(age <span class="sc">==</span> <span class="dv">8</span>,sex <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">lower =</span> <span class="fu">quantile</span>(los,<span class="fl">0.25</span>),</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">upper =</span> <span class="fu">quantile</span>(los,<span class="fl">0.75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rsv <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(age <span class="sc">==</span> <span class="dv">8</span>,sex <span class="sc">==</span> <span class="dv">1</span>,wheeze <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">lower =</span> <span class="fu">quantile</span>(los,<span class="fl">0.25</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">upper =</span> <span class="fu">quantile</span>(los,<span class="fl">0.75</span>))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># What do you mean? seperate? all condition?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
 <table class="dataframe table table-sm table-striped">
@@ -223,26 +155,7 @@ NULL</code></pre>
     <tr><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-    <tr><td>3</td><td>5</td></tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>rsv <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(wheeze <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">lower =</span> <span class="fu">quantile</span>(los,<span class="fl">0.25</span>),</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">upper =</span> <span class="fu">quantile</span>(los,<span class="fl">0.75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-<caption>A tibble: 1 × 2</caption>
-<thead>
-    <tr><th scope="col">lower</th><th scope="col">upper</th></tr>
-    <tr><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
-</thead>
-<tbody>
-    <tr><td>3</td><td>7</td></tr>
+    <tr><td>4.25</td><td>5.75</td></tr>
 </tbody>
 </table>
 </div>
@@ -251,58 +164,53 @@ NULL</code></pre>
 <li>Develop a prediction model for major medical intervention based on the following variables:</li>
 </ol>
 <p>• Age. • Sex. • Birth weight. • Prior smoke exposure. • Atopy. • Family history of asthma. • Respiratory rate. • Wheezing. • Cyanosis.</p>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## when he said develop a model, does it mean I have free choice of the model?</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123123</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>train_index <span class="ot">=</span> <span class="fu">createDataPartition</span>(rsv<span class="sc">$</span>los,<span class="at">p =</span> <span class="fl">0.5</span>,<span class="at">list =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>train_rsv <span class="ot">=</span> rsv[train_index,]</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>test_rsv <span class="ot">=</span> rsv[<span class="sc">-</span>train_index,]</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>model_1 <span class="ot">=</span> <span class="fu">train</span>(<span class="at">x =</span> train_rsv <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>los) <span class="sc">%&gt;%</span> as.matrix,</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">y =</span> train_rsv<span class="sc">$</span>los,</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">"lm"</span>,</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"cv"</span>,<span class="at">number =</span> <span class="dv">10</span>),</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">metric =</span> <span class="st">"RMSE"</span>)</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="fu">cv.glmnet</span>(</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>                <span class="at">x =</span> </span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">model.matrix</span>(los<span class="sc">~</span>age<span class="sc">*</span>sex<span class="sc">*</span>bwt<span class="sc">*</span>smoke<span class="sc">*</span>atopy<span class="sc">*</span>fhxasth<span class="sc">*</span>resp<span class="sc">*</span><span class="fu">as.factor</span>(wheeze)<span class="sc">*</span><span class="fu">as.factor</span>(cyan),</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>                             <span class="at">data =</span> train_rsv)[,<span class="sc">-</span><span class="dv">1</span>],</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>                <span class="at">y =</span> train_rsv<span class="sc">$</span>los,</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>                <span class="at">family =</span> <span class="st">"gaussian"</span>,</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>                <span class="at">type.measure =</span> <span class="st">"mse"</span>,</span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>                <span class="at">nfolds =</span> <span class="dv">10</span>,</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>model_2 <span class="ot">=</span> <span class="fu">glmnet</span>(                </span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> </span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">model.matrix</span>(los<span class="sc">~</span>age<span class="sc">*</span>sex<span class="sc">*</span>bwt<span class="sc">*</span>smoke<span class="sc">*</span>atopy<span class="sc">*</span>fhxasth<span class="sc">*</span>resp<span class="sc">*</span><span class="fu">as.factor</span>(wheeze)<span class="sc">*</span><span class="fu">as.factor</span>(cyan),</span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>                             <span class="at">data =</span> train_rsv)[,<span class="sc">-</span><span class="dv">1</span>],</span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>                <span class="at">y =</span> train_rsv<span class="sc">$</span>los,</span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>                <span class="at">alpha =</span> <span class="dv">1</span>,</span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>                <span class="at">lambda =</span> <span class="fl">0.1244</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## when he said develop a model, does it mean I have free choice of the model?</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123123</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>train_index <span class="ot">=</span> <span class="fu">createDataPartition</span>(rsv<span class="sc">$</span>los,<span class="at">p =</span> <span class="fl">0.5</span>,<span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>train_rsv <span class="ot">=</span> rsv[train_index,]</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>test_rsv <span class="ot">=</span> rsv[<span class="sc">-</span>train_index,]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>model_1 <span class="ot">=</span> <span class="fu">lm</span>(los<span class="sc">~</span>age<span class="sc">+</span>sex<span class="sc">+</span>bwt<span class="sc">+</span>smoke<span class="sc">+</span>atopy<span class="sc">+</span>fhxasth<span class="sc">+</span>resp<span class="sc">+</span>wheeze<span class="sc">+</span>cyan,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                             <span class="at">data =</span> train_rsv)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">cv.glmnet</span>(</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">x =</span> </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">model.matrix</span>(los<span class="sc">~</span>age<span class="sc">*</span>sex<span class="sc">*</span>bwt<span class="sc">*</span>smoke<span class="sc">*</span>atopy<span class="sc">*</span>fhxasth<span class="sc">*</span>resp<span class="sc">*</span>wheeze<span class="sc">*</span>cyan,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                             <span class="at">data =</span> train_rsv)[,<span class="sc">-</span><span class="dv">1</span>],</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">y =</span> train_rsv<span class="sc">$</span>los,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">family =</span> <span class="st">"gaussian"</span>,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>                <span class="at">type.measure =</span> <span class="st">"mse"</span>,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>                <span class="at">nfolds =</span> <span class="dv">10</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>model_2 <span class="ot">=</span> <span class="fu">glmnet</span>(                </span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> </span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">model.matrix</span>(los<span class="sc">~</span>age<span class="sc">*</span>sex<span class="sc">*</span>bwt<span class="sc">*</span>smoke<span class="sc">*</span>atopy<span class="sc">*</span>fhxasth<span class="sc">*</span>resp<span class="sc">*</span>wheeze<span class="sc">*</span>cyan,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>                             <span class="at">data =</span> train_rsv)[,<span class="sc">-</span><span class="dv">1</span>],</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>                <span class="at">y =</span> train_rsv<span class="sc">$</span>los,</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>                <span class="at">alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>                <span class="at">lambda =</span> <span class="fl">0.1244</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
-Call:  cv.glmnet(x = model.matrix(los ~ age * sex * bwt * smoke * atopy *      fhxasth * resp * as.factor(wheeze) * as.factor(cyan), data = train_rsv)[,      -1], y = train_rsv$los, type.measure = "mse", nfolds = 10,      family = "gaussian") 
+Call:  cv.glmnet(x = model.matrix(los ~ age * sex * bwt * smoke * atopy *      fhxasth * resp * wheeze * cyan, data = train_rsv)[, -1],      y = train_rsv$los, type.measure = "mse", nfolds = 10, family = "gaussian") 
 
 Measure: Mean-Squared Error 
 
     Lambda Index Measure    SE Nonzero
-min 0.1244    39   10.25 1.196      42
-1se 0.7288     1   10.82 1.202       0</code></pre>
+min 0.1805    31   10.30 1.158      31
+1se 0.7288     1   10.82 1.216       0</code></pre>
 </div>
 </div>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Predicting error</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>((<span class="fu">predict</span>(model_1,<span class="at">newdata =</span> test_rsv) <span class="sc">-</span> test_rsv<span class="sc">$</span>los)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>((<span class="fu">predict</span>(model_2,<span class="at">newx =</span> </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">model.matrix</span>(los<span class="sc">~</span>age<span class="sc">*</span>sex<span class="sc">*</span>bwt<span class="sc">*</span>smoke<span class="sc">*</span>atopy<span class="sc">*</span>fhxasth<span class="sc">*</span>resp<span class="sc">*</span><span class="fu">as.factor</span>(wheeze)<span class="sc">*</span><span class="fu">as.factor</span>(cyan),</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                             <span class="at">data =</span> test_rsv)[,<span class="sc">-</span><span class="dv">1</span>] </span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">-</span> test_rsv<span class="sc">$</span>los)<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Predicting error</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>((<span class="fu">predict</span>(model_1,<span class="at">newdata =</span> test_rsv) <span class="sc">-</span> test_rsv<span class="sc">$</span>los)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(((<span class="fu">predict</span>(model_2,<span class="at">newx =</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">model.matrix</span>(los<span class="sc">~</span>age<span class="sc">*</span>sex<span class="sc">*</span>bwt<span class="sc">*</span>smoke<span class="sc">*</span>atopy<span class="sc">*</span>fhxasth<span class="sc">*</span>resp<span class="sc">*</span>wheeze<span class="sc">*</span>cyan,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                             <span class="at">data =</span> test_rsv)[,<span class="sc">-</span><span class="dv">1</span>])</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">-</span> test_rsv<span class="sc">$</span>los)<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-7.206809368269
+11.2537089831972
 </div>
 <div class="cell-output cell-output-display">
 11.5394849718764
@@ -314,10 +222,50 @@ min 0.1244    39   10.25 1.196      42
 <p>• An estimate based on the presumption that spinal cord volume follows a normal distribution with mean μ and variance σ2: Q̂(p) = μ̂+Φ1(p)×̂σ, where μ̂ = Xn denotes the sample mean, ̂σ denotes the sample standard deviation, and Φ1(p) denotes the pth quantile of the standard normal distribution.</p>
 <p>• An estimate that does not make specific assumptions about the underlying distribution of spinal cord volume, based on the inverse of the empirical cumulative distribution function. This can be obtained in R through the command quantile(…, type = 1). Specifying the ‘type’ argument is important, as the default approach is different from the one described here.</p>
 <p>In this problem, your task is to compare these two estimation approaches using Monte Carlo (simulation) based techniques. Your code for all problems must be turned in as clearly labeled supplementary .R file.</p>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## (a) simulation</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123123</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="a">
+<li>For each of the two quantiles considered, present plots to compare the percentage bias and the variance of each estimator as functions of sample size (the figure will look nicer if you present the x-axis on a log-scale—e.g., with the option log=“x”). Briefly summarize your findings.</li>
+</ol>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>result <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(quantile,n) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise_all</span>(mean) <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">quantile =</span> <span class="fu">as.factor</span>(quantile)) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,<span class="at">y =</span> fn1,<span class="at">linetype =</span> quantile,<span class="at">group =</span> quantile,<span class="at">color=</span> <span class="st">"fn1"</span>))<span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,<span class="at">y =</span> fn2,<span class="at">linetype =</span> quantile,<span class="at">group =</span> quantile,<span class="at">color =</span> <span class="st">"fn2"</span>)) <span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">trans =</span> <span class="st">"log"</span>,<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">40</span>,<span class="dv">80</span>,<span class="dv">160</span>,<span class="dv">320</span>,<span class="dv">640</span>,<span class="dv">1280</span>))<span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent)<span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sample size (log scale)"</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">"Bias"</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">color =</span> <span class="st">"Function"</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">linetype =</span> <span class="st">"Quantile"</span>,</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">"Bias of two functions"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="20220applied_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<ol start="4" type="a">
+<li>Repeat parts (a)-(c), instead re-defining spinal cord volume to follow a shifted Gamma distribution: X=60+Z,whereZ∼Gamma(k=4,θ=5). Note: E[X]=80 and Var[X]=100,just as inpart(a).</li>
+</ol>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>result <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(quantile,n) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise_all</span>(mean) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">quantile =</span> <span class="fu">as.factor</span>(quantile)) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,<span class="at">y =</span> fn1,<span class="at">linetype =</span> quantile,<span class="at">group =</span> quantile,<span class="at">color=</span> <span class="st">"fn1"</span>))<span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,<span class="at">y =</span> fn2,<span class="at">linetype =</span> quantile,<span class="at">group =</span> quantile,<span class="at">color =</span> <span class="st">"fn2"</span>)) <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_stata</span>()<span class="sc">+</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">trans =</span> <span class="st">"log"</span>,<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">40</span>,<span class="dv">80</span>,<span class="dv">160</span>,<span class="dv">320</span>,<span class="dv">640</span>,<span class="dv">1280</span>))<span class="sc">+</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent)<span class="sc">+</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sample size (log scale)"</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">"Bias"</span>,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">color =</span> <span class="st">"Function"</span>,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">linetype =</span> <span class="st">"Quantile"</span>,</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">"Bias of two functions"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="20220applied_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+</div>
 </div>
 
 </main>
