@@ -1,0 +1,1356 @@
+---
+title : 'COMPS NOTES'
+table-of-contents: true
+editor: source
+preview:
+  timeout: 5
+format: 
+  pdf:
+    pdf-engine: xelatex
+toc : true
+toc-depth: 3
+geometry: 
+  - top=25mm
+  - bottom=30mm
+header-includes:
+       - \usepackage{pdfpages}
+       - \usepackage{todonotes}
+       - \usepackage{fancyhdr}
+       - \pagestyle{fancy}
+       - \fancyhf{}
+       - \renewcommand{\subsectionmark}[1]{\markboth{#1}{}}
+       - \renewcommand{\subsubsectionmark}[1]{\markboth{#1}{}}
+       - \fancyhead[L]{\hyperlink{page.1}{\leftmark}}
+       - \fancyfoot[C]{\thepage}
+       - \usepackage{cancel}
+---
+
+\newpage
+
+# Probability Foundation
+
+## MGF-Moment Generate Function
+
+-   Use to find moment, if question asked to find second moment and you find yourself using pdf, usually wrong and much easier using MGF
+
+-   **Use MGF to prove converge in distribution**, see comps 2022
+
+#### Theorem
+
+**Definition 2.3.6** Let $X$ be a random variable with cdf $F_X$. The moment generating function (mgf) of $X$ (or $F_X$ ), denoted by $M_X(t)$, is
+
+$$
+M_X(t)=\mathrm{E} e^{t X}
+$$
+
+provided that the expectation exists for $t$ in some neighborhood of 0 . That is, there is an $h>0$ such that, for all $t$ in $-h<t<h, \mathrm{E} e^{t X}$ exists. If the expectation does not exist in a neighborhood of 0 , we say that the moment generating function does not exist. More explicitly, we can write the mgf of $X$ as
+
+$$
+M_X(t)=\int_{-\infty}^{\infty} e^{t x} f_X(x) d x \quad \text { if } X \text { is continuous, }
+$$
+
+or
+
+$$
+M_X(t)=\sum_x e^{t x} P(X=x) \quad \text { if } X \text { is discrete. }
+$$
+
+It is very easy to see how the mgf generates moments. We summarize the result in the following theorem.
+
+**Theorem 2.3.7** If $X$ has mgf $M_X(t)$, then
+
+$$
+\mathrm{E} X^n=M_X^{(n)}(0)
+$$
+
+where we define
+
+$$
+M_X^{(n)}(0)=\left.\frac{d^n}{d t^n} M_X(t)\right|_{t=0}
+$$
+
+That is, the nth moment is equal to the $n$th derivative of $M_X(t)$ evaluated at $t=0$.
+
+**Theorem 2.3.12 (Convergence of mgfs)** Suppose $\left\{X_i, i=1,2, \ldots\right\}$ is a sequence of random variables, each with mgf $M_{X_i}(t)$. Furthermore, suppose that
+
+$$
+\lim _{i \rightarrow \infty} M_{X_i}(t)=M_X(t), \quad \text { for all } t \text { in a neighborhood of } 0 \text {, }
+$$
+
+and $M_X(t)$ is an mgf. Then there is a unique cdf $F_X$ whose moments are determined by $M_X(t)$ and, for all $x$ where $F_X(x)$ is continuous, we have
+
+$$
+\lim _{i \rightarrow \infty} F_{X_i}(x)=F_X(x)
+$$ That is, convergence, for $|t|<h$, of mgfs to an mgf implies convergence of cdfs.
+
+**Theorem 2.3.15** For any constants $a$ and $b$, the mgf of the random variable $a X+b$ is giten by
+
+$$
+M_{aX+b}(t)=e^{b t} M_X(a t)
+$$
+
+#### Example: Use MGF to show poison Convergence
+
+```{=tex}
+$$
+P(X=x) \approx P(Y=x)
+$$ for large $n$ and small $n p$. We now show that the mgfs converge, lending credence to this approximation. Recall that $$
+M_X(t)=\left[p e^t+(1-p)\right]^n
+$$ For the Poisson( $\lambda)$ distribution, we can calculate (see Exercise 2.33) $$
+M_y(t)=e^{\lambda\left(e^t-1\right)}
+$$ and if we define $p=\lambda / n$, then $M_X(t) \rightarrow M_Y(t)$ as $n \rightarrow \infty$. The validity of the approximation in $(2.3 .9)$ will then follow from Theorem 2.3.12.
+
+We first must digress a bit and mention an important limit result, one that has wide applicability in statistics. The proof of this lemma may be found in many standard calculus texts.
+
+Lemma 2.3.14 Let $a_1, a_2, \ldots$ be a sequence of numbers converging to $a$, that is, $\lim _{n \rightarrow \infty} a_n=a$. Then $$
+\lim _{n \rightarrow \infty}\left(1+\frac{a_n}{n}\right)^n=e^a
+$$ Returning to the example, we have $$
+M_x(t)=\left[p e^t+(1-p)\right]^n=\left[1+\frac{1}{n}\left(e^t-1\right)(n p)\right]^n=\left[1+\frac{1}{n}\left(e^t-1\right) \lambda\right]^n,
+$$ because $\lambda=n p$. Now set $a_n=a=\left(e^t-1\right) \lambda$, and apply Lemms 2.3.14 to get $$
+\lim _{n \rightarrow \infty} M_X(t)=e^{\lambda\left(e^t-1\right)}=M_Y(t)
+$$ the moment generating function of the Poisson.
+
+The Poisson approximation can be quite good even for moderate $p$ and $n$. In Figure 2.3.3 we show a binomial mass function along with its Poisson approximation, with $\lambda=n p$. The approximation appears to be satisfactory.
+```
+#### Example: Rao's Blackwell 6.8
+
+\includepdf[page={35},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+
+## Independent
+
+-   $f(x,y) = f(x)f(y)$
+-   $f(x|y) = f(x)$
+-   $E[xy] = E[x]E[y]$
+
+#### Example: Show $\bar X \perp S^2$
+
+```{=tex}
+Without loss of generality, we assume i.i.d sample $X_1,...,X_n\sim N(0,1)$
+
+Let's look at the first case $X_1$:
+
+Recall that $\sum_1(X_i - \bar X) = n\frac{\sum_1X_i}{n} - n\bar X= 0$, we have: $$
+\begin{gathered}
+\sum_2 (X_i - \bar X) = -(X_1-\bar X)\\
+\Rightarrow (X_1-\bar X)^2 = [\sum_2 (X_i - \bar X)]^2
+\end{gathered}
+$$
+
+Replace it into sample variance we have:
+
+$$
+\begin{gathered}
+S^2 = \frac{1}{n-1}\sum_1(X_i - \bar X)^2\\
+= \frac{1}{n-1}[(X_1 - \bar X)^2+ \sum_2(X_i - \bar X)^2]\\
+= \frac{1}{n-1}\{[\sum_2(X_i - \bar X)]^2+ \sum_2(X_i - \bar X)^2\}\\
+\mbox{is a function of } X_i-\bar X, i\in\{2,...,n\}
+\end{gathered}
+$$
+
+Next, we need to show jointly $\bar X$ and $X_i-\bar X, i\in\{2,...,n\}$ are independent.
+
+We do that by finding the joint pdf and
+
+Now, let $Y_1 = \bar X, Y_2 = X_2 - \bar X,...,Y_n = X_n - \bar X$, we have $$
+\begin{gathered}
+\sum_2 Y_i = \sum_2 X_i - \sum_2 \bar X\\
+= \sum_1 \bar X - X_1 - \sum_2 \bar X\\
+= \bar X - X_1\\
+\Rightarrow
+\begin{cases}
+X_1 = Y_1 - \sum_2 Y_i\\
+X_i = Y_i + Y_1
+\end{cases}
+\end{gathered}
+$$
+
+So the jacobian is
+
+$$
+\begin{bmatrix}
+\frac{\partial X_1}{\partial Y_1} &...&\frac{\partial X_n}{\partial Y_1} \\
+...&...&...\\
+\frac{\partial X_1}{\partial Y_n} &...&\frac{\partial X_n}{\partial Y_n} 
+\end{bmatrix} = 
+\begin{bmatrix}
+1&-1&-1&...&-1\\
+1&1&0&...&0\\
+1&0&1&...&0\\
+1&...&...&...&0\\
+1&0&0&...&1
+\end{bmatrix}
+$$
+
+We can show that $|J| = n$,
+
+By i.i.d, we have 
+$$
+f_{X_1,...,X_n} = (2\pi)^{-n/2}exp\{-\frac{1}{2} \sum X_i^2\}
+$$
+
+Replacing $Y_i$ we have
+
+$$
+\begin{gathered}
+f_{Y_1,...,Y_n} = n(2\pi)^{-n/2}exp\{-\frac{1}{2}[(Y_1 - \sum_2 Y_i )^2 +  \sum_2 (Y_i + Y_1)^2]\}\\
+= c*exp\{-0.5[(Y_1^2 - \cancel{2Y_1\sum_2 Y_i} + (\sum_2 Y_i)^2) +
+\sum_2(Y_1^2+\cancel{2Y_1Y_i} + Y_i^2)
+]\}\\
+= c*exp(-0.5nY_1^2)*exp(-0.5[(\sum_2Y_i)^2 + \sum_2 Y_i^2])
+\end{gathered}
+$$ 
+*We left out the indicator function since they don't have interaction indicator function*
+
+By factorization, $Y_1 = \bar X \perp \sum_2 Y_i$, since a function of independent R.V is also independent, we have $\bar X \perp S^2 \blacksquare$
+```
+## Conditional
+
+### Definition
+
+$$
+P(A|B) = \frac{P(A \cap B)}{P(B)} 
+$$
+
+-   if $A\perp B$,
+
+$$
+P(A|B) = \frac{P(A \cap B)}{P(B)}  = \frac{P(A)P(B)}{P(B)} = P(A)
+$$ - if $A\subset B$,
+
+$$
+P(A|B) = \frac{P(A \cap B)}{P(B)}  = \frac{P(A)}{P(B)}
+$$
+
+### Conditional Expectation & Variance ...
+
+$$
+E[g(X)|Y] = \int g(x)*f_{X|Y}(x) dx \Rightarrow h(Y)
+$$
+
+-   Conditional something of $Y$ should be a function of $Y$
+-   $E[X|X] =X$ itself:
+
+```{=tex}
+Proof:
+$$
+E[X|X] = \int xf(x|X)dx
+$$
+where f(x|X) is the conditional probability density function of X given X.
+
+However, since we already know the value of X, the conditional probability density function of X given X is just a Dirac delta function centered at X, which is defined as:
+$$
+f(x|X) = \delta(x - X)
+$$
+where $\delta(x - X)$ is the Dirac delta function, which is zero for all values of x except $x = X$, where it is infinite.
+
+Substituting this into the expression for the conditional expectation, we get:
+$$
+E[X|X] = \int x \delta(x - X) dx
+$$
+Since the Dirac delta function is zero everywhere except at x = X, this integral evaluates to:
+$$
+E[X|X] = X * \int \delta(x - X) dx
+$$
+where the integral evaluates to 1 since the Dirac delta function integrates to 1 over its support. Therefore, we have:
+$$
+E[X|X] = X
+$$
+```
+-   $Var(X|X) = 0$, I know mind blowing
+
+```{=tex}
+Proof:
+$$
+Var(X|X) = E[(X - E[X|X])^2 | X]
+$$
+Since $E[X|X] = X$, we have:
+$$
+Var(X|X) = E[(X - X)^2 | X] = E[0 | X] = 0
+$$
+```
+### Total Variance
+
+-   You failed to show it in homework
+
+$$
+Var(X) = Var(E[X|Y]) + E[Var(X|Y)]
+$$
+
+```{=tex}
+Proof:
+
+$$
+\begin{gathered}
+Var(X) = E[X  -E[X]]^2\\
+= E\{X - E[X|Y] + E[X|Y] - E[X]\}^2\\
+= E[X-E[E|Y]]^2 + E[E[X|Y] - E[X]]^2 \\
++2E[(X-E[X|Y])(E[X|Y]-E[X])]
+\end{gathered}
+$$
+
+The last term in this expression is equal to 0 , however, which can easily be seen by iterating the expectation:
+$$
+\mathrm{E}([X-\mathrm{E}(X \mid Y)][\mathrm{E}(X \mid Y)-\mathrm{E} X])=\mathrm{E}(\mathrm{E}\{[X-\mathrm{E}(X \mid Y)][\mathrm{E}(X \mid Y)-\mathrm{E} X] \mid Y\})
+$$
+In the conditional distribution $X \mid Y, X$ is the random variable. So in the expression
+$$
+\mathrm{E}\{[X-\mathrm{E}(X \mid Y)][\mathrm{E}(X \mid Y)-\mathrm{E} X] \mid Y\}
+$$
+$\mathrm{E}(X \mid Y)$ and $\mathrm{E} X$ are constants. Thus,
+$$
+\begin{aligned}
+\mathrm{E}\{[X-\mathrm{E}(X \mid Y)][\mathrm{E}(X \mid Y)-\mathrm{E} X] \mid Y\} & =(\mathrm{E}(X \mid Y)-\mathrm{E} X)(\mathrm{E}\{[X-\mathrm{E}(X \mid Y)] \mid Y\}) \\
+& =(\mathrm{E}(X \mid Y)-\mathrm{E} X)(\mathrm{E}(X \mid Y)-\mathrm{E}(X \mid Y)) \\
+& =(\mathrm{E}(X \mid Y)-\mathrm{E} X)(0) \\
+& =0 .
+\end{aligned}
+$$
+Thus, from (4.4.6), we have that $\mathrm{E}((X-\mathrm{E}(X \mid Y))(\mathrm{E}(X \mid Y)-\mathrm{E} X))=\mathrm{E}(0)=0$. Referring back to equation (4.4.5), we see that
+$$
+\begin{aligned}
+\mathrm{E}\left([X-\mathrm{E}(X \mid Y)]^2\right) & =\mathrm{E}\left(\mathrm{E}\left\{[X-\mathrm{E}(X \mid Y)]^2 \mid Y\right\}\right) \\
+& =\mathrm{E}(\operatorname{Var}(X \mid Y))
+\end{aligned}
+$$
+and
+$$
+\mathrm{E}\left([\mathrm{E}(X \mid Y)-\mathrm{E} X]^2\right)=\operatorname{Var}(\mathrm{E}(X \mid Y))
+$$
+establishing (4.4.4).
+```
+### Hierarchical Model
+
+$$
+E[X] = E[E[X|Y]] = E[E[E[X|Y,Z]]] = ...
+$$
+
+#### Example
+
+```{=tex}
+$$
+\begin{aligned}
+X \mid Y & \sim \operatorname{binomial}(Y, p) \\
+Y \mid \Lambda & \sim \operatorname{Poisson}(\Lambda) \\
+\Lambda & \sim \operatorname{exponential}(\beta)
+\end{aligned}
+$$
+where the last stage of the hierarchy accounts for the variability across different mothers.
+The mean of $X$ can easily be calculated as
+$$
+\begin{array}{rlr}
+\mathrm{E} X & =\mathrm{E}(\mathrm{E}(X \mid Y)) & \\
+& =\mathrm{E}(p Y) & \\
+& =\mathrm{E}(\mathrm{E}(p Y \mid \Lambda)) & \\
+& =\mathrm{E}(p \Lambda) & \text { (as before) } \\
+& =p \beta, & \text { (exponential expectation) }
+\end{array}
+$$
+```
+## Multivariate Distribution
+
+### Bivariate Normal Distribution
+
+```{=tex}
+
+Let $\mathbf{x}_1$ be the first partition and $\mathbf{x}_2$ the second. Now define $\mathbf{z}=\mathbf{x}_1+\mathbf{A} \mathbf{x}_2$ where $\mathbf{A}=-\Sigma_{12} \Sigma_{22}^{-1}$. Now we can write
+
+$$
+\begin{aligned}
+\operatorname{cov}\left(\mathbf{z}, \mathbf{x}_2\right) & =\operatorname{cov}\left(\mathbf{x}_1, \mathbf{x}_2\right)+\operatorname{cov}\left(\mathbf{A} \mathbf{x}_2, \mathbf{x}_2\right) \\
+& =\Sigma_{12}+\operatorname{Avar}\left(\mathbf{x}_2\right) \\
+& =\Sigma_{12}-\Sigma_{12} \Sigma_{22}^{-1} \Sigma_{22} \\
+& =0
+\end{aligned}
+$$
+
+Therefore $\mathbf{z}$ and $\mathbf{x}_2$ are uncorrelated and, since they are jointly normal, they are independent. Now, clearly $E(\mathbf{z})=\boldsymbol{\mu}_1+\mathbf{A} \boldsymbol{\mu}_2$, therefore it follows that
+
+$$
+\begin{aligned}
+E\left(\mathbf{x}_1 \mid \mathbf{x}_2\right) & =\boldsymbol{E}\left(\mathbf{z}-\mathbf{A} \mathbf{x}_2 \mid \mathbf{x}_2\right) \\
+& =E\left(\mathbf{z} \mid \mathbf{x}_2\right)-E\left(\mathbf{A} \mathbf{x}_2 \mid \mathbf{x}_2\right) \\
+& =E(\mathbf{z})-\mathbf{A} \mathbf{x}_2 \\
+& =\boldsymbol{\mu}_1+\mathbf{A}\left(\boldsymbol{\mu}_2-\mathbf{x}_2\right) \\
+& =\boldsymbol{\mu}_1+\Sigma_{12} \Sigma_{22}^{-1}\left(\mathbf{x}_2-\boldsymbol{\mu}_2\right)
+\end{aligned}
+$$
+
+which proves the first part. For the covariance matrix, note that
+
+$$
+\begin{aligned}
+\operatorname{var}\left(\mathbf{x}_1 \mid \mathbf{x}_2\right) & =\operatorname{var}\left(\mathbf{z}-\mathbf{A} \mathbf{x}_2 \mid \mathbf{x}_2\right) \\
+& =\operatorname{var}\left(\mathbf{z} \mid \mathbf{x}_2\right)+\operatorname{var}\left(\mathbf{A} \mathbf{x}_2 \mid \mathbf{x}_2\right)-\operatorname{Acov}\left(\mathbf{z},-\mathbf{x}_2\right)-\operatorname{cov}\left(\mathbf{z},-\mathbf{x}_2\right) \mathbf{A}^{\prime} \\
+& =\operatorname{var}\left(\mathbf{z} \mid \mathbf{x}_2\right) \\
+& =\operatorname{var}(\mathbf{z})
+\end{aligned}
+$$
+
+Now we're almost done:
+
+$$
+\begin{aligned}
+\operatorname{var}\left(\mathbf{x}_1 \mid \mathbf{x}_2\right)=\operatorname{var}(\mathbf{z}) & =\operatorname{var}\left(\mathbf{x}_1+\mathbf{A} \mathbf{x}_2\right) \\
+& =\operatorname{var}\left(\mathbf{x}_1\right)+\mathbf{A} \operatorname{var}\left(\mathbf{x}_2\right) \mathbf{A}^{\prime}+\mathbf{A c o v}\left(\mathbf{x}_1, \mathbf{x}_2\right)+\operatorname{cov}\left(\mathbf{x}_2, \mathbf{x}_1\right) \mathbf{A}^{\prime} \\
+& =\Sigma_{11}+\Sigma_{12} \Sigma_{22}^{-1} \Sigma_{22} \Sigma_{22}^{-1} \Sigma_{21}-2 \Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21} \\
+& =\Sigma_{11}+\Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21}-2 \Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21}\\
+&= \Sigma_{11}-\Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21}
+\end{aligned}
+$$
+```
+So
+
+$$
+f_{X,Y} = N(
+\begin{bmatrix}
+\mu_x\\\mu_y
+\end{bmatrix},
+\begin{bmatrix}
+\sigma_x^2 & \rho\sigma_x\sigma_y\\
+\rho\sigma_x\sigma_y & \sigma_y^2
+\end{bmatrix}
+)
+$$
+
+And
+
+$$
+f_{X|Y} = N\{
+\mu_x + \rho \sqrt{\frac{\sigma_x}{\sigma_y}}(Y-\mu_y),
+\sigma_x^2(1-\rho)
+\}
+$$
+
+#### Example exercise 4.45
+
+```{=tex}
+Show that if $(X, Y) \sim \operatorname{bivariate} \operatorname{normal}\left(\mu_X, \mu_Y, \sigma_X^2, \sigma_Y^2, \rho\right)$, then the following are true. (a) The marginal distribution of $X$ is $\mathrm{n}\left(\mu_X, \sigma_X^2\right)$ and the marginal distribution of $Y$ is $n\left(\mu_Y, \sigma_Y^2\right)$. (b) The conditional distribution of $Y$ given $X=x$ is 
+$$
+\mathrm{n}\left(\mu_Y+\rho\left(\sigma_Y / \sigma_X\right)\left(x-\mu_X\right), \sigma_Y^2\left(1-\rho^2\right)\right)
+$$ 
+(c) For any constants $a$ and $b$, the distribution of $a X+b Y$ is 
+$$
+\mathrm{n}\left(a \mu_X+b \mu_Y, a^2 \sigma_X^2+b^2 \sigma_Y^2+2 a b \rho \sigma_X \sigma_Y\right)
+$$
+
+The mean is easy to check,
+
+$$
+\mathrm{E}(a X+b Y)=a \mathrm{E} X+b \mathrm{E} Y=a \mu_{X}+b \mu_{Y}
+$$
+
+as is the variance,
+
+$$
+\operatorname{Var}(a X+b Y)=a^{2} \operatorname{Var} X+b^{2} \operatorname{Var} Y+2 a b \operatorname{Cov}(X, Y)=a^{2} \sigma_{X}^{2}+b^{2} \sigma_{Y}^{2}+2 a b \rho \sigma_{X} \sigma_{Y}
+$$
+
+To show that $a X+b Y$ is normal we have to do a bivariate transform. One possibility is $U=a X+b Y, V=Y$, then get $f_{U, V}(u, v)$ and show that $f_{U}(u)$ is normal. We will do this in the standard case. Make the indicated transformation and write $x=\frac{1}{a}(u-b v), y=v$ and obtain
+
+$$
+|J|=\left|\begin{array}{cc}
+1 / a & -b / a \\
+0 & 1
+\end{array}\right|=\frac{1}{a}
+$$
+
+Then
+
+$$
+f_{U V}(u, v)=\frac{1}{2 \pi a \sqrt{1-\rho^{2}}} e^{-\frac{1}{2\left(1-\rho^{2}\right)}\left[\left[\frac{1}{a}(u-b v)\right]^{2}-2 \frac{\rho}{a}(u-b v)+v^{2}\right]} .
+$$
+
+Now factor the exponent to get a square in $u$. The result is
+
+$$
+-\frac{1}{2\left(1-\rho^{2}\right)}\left[\frac{b^{2}+2 \rho a b+a^{2}}{a^{2}}\right]\left[\frac{u^{2}}{b^{2}+2 \rho a b+a^{2}}-2\left(\frac{b+a \rho}{b^{2}+2 \rho a b+a^{2}}\right) u v+v^{2}\right]
+$$
+
+Note that this is joint bivariate normal form since $\mu_{U}=\mu_{V}=0, \sigma_{v}^{2}=1, \sigma_{u}^{2}=a^{2}+b^{2}+2 a b \rho$ and
+
+$$
+\rho^{*}=\frac{\operatorname{Cov}(U, V)}{\sigma_{U} \sigma_{V}}=\frac{\mathrm{E}\left(a X Y+b Y^{2}\right)}{\sigma_{U} \sigma_{V}}=\frac{a \rho+b}{\sqrt{a^{2}+b^{2}+a b \rho}}
+$$
+
+thus
+
+$$
+\left(1-\rho^{* 2}\right)=1-\frac{a^{2} \rho^{2}+a b \rho+b^{2}}{a^{2}+b^{2}+2 a b \rho}=\frac{\left(1-\rho^{2}\right) a^{2}}{a^{2}+b^{2}+2 a b \rho}=\frac{\left(1-\rho^{2}\right) a^{2}}{\sigma_{u}^{2}}
+$$
+
+where $a \sqrt{1-\rho^{2}}=\sigma_{U} \sqrt{1-\rho^{* 2}}$. We can then write
+
+$$
+f_{U V}(u, v)=\frac{1}{2 \pi \sigma_{U} \sigma_{V} \sqrt{1-\rho^{* 2}}} \exp \left[-\frac{1}{2 \sqrt{1-\rho^{* 2}}}\left(\frac{u^{2}}{\sigma_{U}^{2}}-2 \rho \frac{u v}{\sigma_{U} \sigma_{V}}+\frac{v^{2}}{\sigma_{V}^{2}}\right)\right]
+$$
+
+which is in the exact form of a bivariate normal distribution. Thus, by part a), $U$ is normal. 
+```
+#### Example exercise 4.46
+
+```{=tex}
+4.46 ( $A$ derivation of the bivariate normal distribution) Let $Z_1$ and $Z_2$ be independent $\mathrm{n}(0,1)$ random variables, and define new random variables $X$ and $Y$ by 
+$$
+X=a_X Z_1+b_X Z_2+c_X \text { and } Y=a_Y Z_1+b_Y Z_2+c_Y
+$$ 
+where $a_X, b_X, c_X, a_Y, b_Y$, and $c_Y$ are constants. (a) Show that 
+
+$$
+\begin{aligned}
+& \mathrm{E} X=c_X, \quad \operatorname{Var} X=a_X^2+b_X^2, \\
+& \mathrm{E} Y=c_Y, \quad \operatorname{Var} Y=a_Y^2+b_Y^2, \\
+& \operatorname{Cov}(X, Y)=a_X a_Y+b_X b_Y .
+\end{aligned}
+$$ 
+
+(b) If we define the constants $a_X, b_X, c_X, a_Y, b_Y$, and $c_Y$ by 
+
+$$
+\begin{aligned}
+& a_X=\sqrt{\frac{1+\rho}{2}} \sigma_X, \quad b_X=\sqrt{\frac{1-\rho}{2}} \sigma_X, \quad c_X=\mu_X, \\
+& a_Y=\sqrt{\frac{1+\rho}{2}} \sigma_Y, \quad b_Y=-\sqrt{\frac{1-\rho}{2}} \sigma_Y, \quad c_Y=\mu_Y,
+\end{aligned}
+$$ 
+
+where $\mu_X, \mu_Y, \sigma_X^2, \sigma_Y^2$, and $\rho$ are constants, $-1 \leq \rho \leq 1$, then show that 
+
+$$
+\begin{gathered}
+\mathrm{E} X=\mu_X, \quad \operatorname{Var} X=\sigma_X^2, \\
+\mathrm{E} Y=\mu_Y, \quad \operatorname{Var} Y=\sigma_Y^2, \\
+\rho_{X Y}=\rho .
+\end{gathered}
+$$ 
+
+(c) Show that $(X, Y)$ has the bivariate normal pdf with parameters $\mu_X, \mu_Y, \sigma_X^2, \sigma_Y^2$, and $\rho$.
+
+Let $D=a_{X} b_{Y}-a_{Y} b_{X}=-\sqrt{1-\rho^{2}} \sigma_{X} \sigma_{Y}$ and solve for $Z_{1}$ and $Z_{2}$,
+
+$$
+\begin{aligned}
+& Z_{1}=\frac{b_{Y}\left(X-c_{X}\right)-b_{X}\left(Y-c_{Y}\right)}{D}=\frac{\sigma_{Y}\left(X-\mu_{X}\right)+\sigma_{X}\left(Y-\mu_{Y}\right)}{\sqrt{2(1+\rho)} \sigma_{X} \sigma_{Y}} \\
+& Z_{2}=\frac{\sigma_{Y}\left(X-\mu_{X}\right)+\sigma_{X}\left(Y-\mu_{Y}\right)}{\sqrt{2(1-\rho)} \sigma_{X} \sigma_{Y}} .
+\end{aligned}
+$$
+
+Then the Jacobian is
+
+$$
+J=\left(\begin{array}{ll}
+\frac{\partial z_{1}}{\partial x_{1}} & \frac{\partial z_{1}}{\partial y} \\
+\frac{\partial z_{2}}{\partial x} & \frac{\partial z_{2}}{\partial y}
+\end{array}\right)=\left(\begin{array}{cc}
+\frac{b_{Y}}{D} & \frac{-b_{X}}{D} \\
+\frac{-a_{Y}}{D} & \frac{a_{X}}{D}
+\end{array}\right)=\frac{a_{X} b_{Y}}{D^{2}}-\frac{a_{Y} b_{X}}{D^{2}}=\frac{1}{D}=\frac{1}{-\sqrt{1-\rho^{2}} \sigma_{X} \sigma_{Y}}
+$$
+
+and we have that
+
+$$
+\begin{aligned}
+f_{X, Y}(x, y) & =\frac{1}{\sqrt{2 \pi}} e^{-\frac{1}{2} \frac{\left(\sigma_{Y}\left(x-\mu_{X}\right)+\sigma_{X}\left(y-\mu_{Y}\right)\right)^{2}}{2(1+\rho) \sigma_{X}^{2} \sigma_{Y}^{2}}} \frac{1}{\sqrt{2 \pi}} e^{-\frac{1}{2} \frac{\left(\sigma_{Y}\left(x-\mu_{X}\right)+\sigma_{X}\left(y-\mu_{Y}\right)\right)^{2}}{2(1-\rho) \sigma_{X}^{2} \sigma_{Y}^{2}}} \frac{1}{\sqrt{1-\rho^{2}} \sigma_{X} \sigma_{Y}} \\
+& =\left(2 \pi \sigma_{X} \sigma_{Y} \sqrt{1-\rho^{2}}\right)^{-1} \exp \left(-\frac{1}{2\left(1-\rho^{2}\right)}\left(\frac{x-\mu_{X}}{\sigma_{X}}\right)^{2}\right) \\
+& -2 \rho \frac{x-\mu_{X}}{\sigma_{X}}\left(\frac{y-\mu_{Y}}{\sigma_{Y}}\right)+\left(\frac{y-\mu_{Y}}{\sigma_{Y}}\right)^{2}, \quad-\infty<x<\infty,-\infty<y<\infty,
+\end{aligned}
+$$
+
+a bivariate normal pdf.
+```
+### Multinomial
+
+## Transformation/Location Scale Family
+
+### Univariate Transformation
+
+### Location Scale Family
+
+\includepdf[page={145-147},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/Downloads/statistical_inference_casella-berger.pdf}
+
+### Multivariate Transformation
+
+| Year   | Question | How it goes         |
+|--------|----------|---------------------|
+| 2021 T | 2        | Bad, very important |
+|        |          |                     |
+|        |          |                     |
+|        |          |                     |
+
+#### Exercise CB 5.17
+
+## Order Statistics
+
+If the kth order staistics is less than X, then it means that at least k-1 observations are less than X.
+
+Based on this we can have the cdf for the kth order statistics:
+
+### Discrete Ordered Statistics
+
+Given a random sample $X_1, X_2, \cdots, X_n$ from a discrete distribution with pmf $f(x)$,
+
+The probability that there are exact $k$ observations less than $x$ is:
+
+$$
+P(X_{(k)} = x) = {n \choose k} P(X_1 < x)^k (1 - P(X_1 < x))^{n-k}
+$$
+
+The probablity that at least $k$ observations are less than $x$ is:
+
+$$
+P(X_{(k)} \leq x) = \sum_{i=k}^n {n \choose i} F_X(x)^i (1 - F_X(x))^{n-i}
+$$
+
+### Continuous Ordered Statistics
+
+Given a random sample $X_1, X_2, \cdots, X_n$ from a continuous distribution with cdf $F(x)$,
+
+the pdf of the kth order statistics is:
+
+$$
+f_{X_{(k)}}(x) = \frac{n!}{(k-1)!(n-k)!} F_X(x)^{k-1} (1 - F_X(x))^{n-k}f_X(x)
+$$ **Just draw a line and you can write down the joint pdf**
+
+#### Joint Ordered Statistics
+
+```{=tex}
+Theorem 5.4.6 Let $X_{(1)}, \ldots, X_{(n)}$ denote the order statistics of a random sample, $X_1, \ldots, X_n$, from a continuous population with cdf $F_X(x)$ and pdf $f_X(x)$. Then the joint pdf of $X_{(i)}$ and $X_{(j)}, 1 \leq i<j \leq n$, is
+$$
+\begin{aligned}
+\text { (5.4.7) } \quad f_{X_{(i)}, X_{(j)}}(u, v)= & \frac{n !}{(i-1) !(j-1-i) !(n-j) !} f_X(u) f_X(v)\left[F_X(u)\right]^{i-1} \\
+& \times\left[F_X(v)-F_X(u)\right]^{j-1-i}\left[1-F_X(v)\right]^{n-j}
+\end{aligned}
+$$
+for $-\infty<u<v<\infty$
+```
+\href{https://uregina.ca/~kozdron/Teaching/Regina/351Fall15/Handouts/351lect19.pdf}{Some Simple Examples}
+
+\includepdf[page={8},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/OneDrive-Vanderbilt/comps/reference/order_stats.pdf}
+
+#### Exercise CB 5.24
+
+```{=tex}
+Show that $X_{(1)}/X_{(n)}$ and $X_{(n)}$ are independent, where $f_X(x) = 1/\theta$
+
+Proof:
+Use $f_X(x)=1 / \theta, F_X(x)=x / \theta, 0<x<\theta$. Let $Y=X_{(n)}, Z=X_{(1)}$. Then, from Theorem 5.4.6,
+$$
+f_{Z, Y}(z, y)=\frac{n !}{0 !(n-2) ! 0 !} \frac{1}{\theta} \frac{1}{\theta}\left(\frac{z}{\theta}\right)^0\left(\frac{y-z}{\theta}\right)^{n-2}\left(1-\frac{y}{\theta}\right)^0=\frac{n(n-1)}{\theta^n}(y-z)^{n-2}, 0<z<y<\theta
+$$
+Solutions Manual for Statistical Inference
+Now let $W=Z / Y, Q=Y$. Then $Y=Q, Z=W Q$, and $|J|=q$. Therefore
+$$
+f_{W, Q}(w, q)=\frac{n(n-1)}{\theta^n}(q-w q)^{n-2} q=\frac{n(n-1)}{\theta^n}(1-w)^{n-2} q^{n-1}, 0<w<1,0<q<\theta .
+$$
+The joint pdf factors into functions of $w$ and $q$, and, hence, $W$ and $Q$ are independent.
+```
+#### Exercise CB 5.27
+
+#### Exercise CB 5.42
+
+#### Exercise CB 7.49
+
+#### Example: 2021-T 3a-b
+
+# Asymptotic Probability
+
+## Necessary Inequality
+
+### Chebychev's Inequality
+
+Let X be a random variable and let $g(z)$ be a nonnegative function. Then, for any $r > 0$,
+
+$$
+P(g(X) \geq r) \leq \frac{\mathrm{E} g(X)}{r} .
+$$ Proof: $$
+\begin{aligned}
+\mathrm{Eg} g(X) & =\int_{-\infty}^{\infty} g(x) f_X(x) d x \\
+& \geq \int_{\{x: g(x) \geq r\}} g(x) f_X(x) d x \quad \quad(g \text { is nonnegative) } \\
+& \geq r \int_{\{x: g(x) \geq r\}} f_X(x) d x \\
+& =r P(g(X) \geq r) . \quad \text { (definition) }
+\end{aligned}
+$$ Example
+
+### Holder's Inequality
+
+### Cauchy's Inequality
+
+### Jenson's Inequality
+
+```{=tex}
+Theorem 4.7.7 (Jensen's Inequality) For any random variable $X$, if $g(x)$ is $a$ convex function, then $$
+E g(X) \geq g(\mathrm{E} X)
+$$ Equality holds if and only if, for every line $a+b x$ that is tangent to $g(x)$ at $x=E X$, $P(g(X)=a+b X)=1$
+
+Proof: To establish the inequality, let $l(x)$ be a tangent line to $g(x)$ at the point $g(\mathrm{E} X)$. (Recall that $\mathrm{E} X$ is a constant.) Write $l(x)=a+b x$ for some $a$ and $b$. The situation is illustrated in Figure 4.7.2.
+
+Now, by the convexity of $g$ we have $g(x) \geq a+b x$. Since expectations preserve inequalities, $$
+\begin{array}{rlr}
+\mathrm{E} g(X) & \geq \mathrm{E}(a+b X) & \\
+& =a+b \mathrm{E} X & \left(\begin{array}{c}
+\text { linearity of expectation, } \\
+\text { Theorem 2.2.5 }
+\end{array}\right) \\
+& =l(\mathrm{E} X) & \text { (definition of } l(x)) \\
+& =g(\mathrm{E} X), & (l \text { is tangent at } \mathrm{E} X)
+\end{array}
+$$ as was to be shown. If $g(x)$ is linear, equality follows from properties of expectations (Theorem 2.2.5). For the "only if" part see Exercise 4.62 .
+
+One immediate application of Jensen's Inequality shows that $\mathrm{E} X^2 \geq(\mathrm{E} X)^2$, since $g(x)=x^2$ is convex. Also, if $x$ is positive, then $1 / x$ is convex; hence $\mathrm{E}(1 / X) \geq 1 / \mathrm{E} X$, another useful application.
+
+To check convexity of a twice differentiable function is quite easy. The function $g(x)$ is convex if $g^{\prime \prime}(x) \geq 0$, for all $x$, and $g(x)$ is concave if $g^{\prime \prime}(x) \leq 0$, for all $x$. Jensen's Inequality applies to concave functions as well. If $g$ is concave, then $\mathrm{E} g(X) \leq g(\mathrm{E} X)$.
+```
+### Markov's Inequality
+
+### Boferroni's Inequality
+
+## Converge
+
+### Converge in Probability
+
+#### Definition:
+
+A sequence of random variables, $X_{1}, X_{2}, \ldots$, converges in probability to a random variable $X$ if, for every $\epsilon>0$,
+
+$$
+\lim _{n \rightarrow \infty} P\left(\left|X_{n}-X\right| \geq \epsilon\right)=0 \quad \text { or, equivalently, } \quad \lim _{n \rightarrow \infty} P\left(\left|X_{n}-X\right|<\epsilon\right)=1 .
+$$
+
+The $X_{1}, X_{2}, \ldots$ in Definition 5.5.1 (and the other definitions in this section) are typically not independent and identically distributed random variables, as in a random sample. The distribution of $X_{n}$ changes as the subscript changes, and the convergence concepts discussed in this section describe different ways in which the distribution of $X_{n}$ converges to some limiting distribution as the subscript becomes large.
+
+#### Theorem 5.5.4
+
+Suppose that $X_{1}, X_{2}, \ldots$ converges in probability to a random variable $X$ and that $h$ is a continuous function. Then $h\left(X_{1}\right), h\left(X_{2}\right), \ldots$ converges in probability to $h(X)$.
+
+#### Exercise CB 5.32
+
+#### Exercise CB 5.33
+
+### Converge in Distribution
+
+We have already encountered the iden of convergence in distribution in Chapter 2. Remember the properties of moment generating functions (mgfs) and how their convergence implies convergence in distribution (Theorem 2.3.12).
+
+#### Definition 5.5.10
+
+A sequence of random variables, $X_1, X_2, \ldots$, converges in distri. bution to a random variable $X$ if $$
+\lim _{n \rightarrow \infty} F_{X_{\infty}}(x)=F_x(x)
+$$ st all points $x$ where $F_X(x)$ is continuous.
+
+#### Slutsky's Theorem
+
+Theorem 5.5.17 (Slutsky's Theorem) If $X_n \to X$ in distribution and $Y\to a$, where a is constant, in probability, then
+
+$$
+Y_n X_n\to^d a+X \mbox{ in distribution}
+$$
+
+$$
+Y_n+X_n\to^d aX \mbox{ in distribution}
+$$
+
+
+#### Continuous Mapping Theorem
+
+
+
+#### Example 5.5.11 (Maximum of uniforms)
+
+If $X_1, X_{21 \ldots}$ are lid uniform(0,1) and $X_{(n)}=\max _{1 \leq i \leq n} X_{i n}$, let us examine if (and to where) $X_{(\mathrm{s})}$ converges in distribution. As $n \rightarrow \infty$, we expeet $X_{(n)}$ to get eloee to 1 and, as $X_{(n)}$ must necessarily be leas than 1 , we have for any $\varepsilon>0$,
+
+$$
+\begin{aligned}
+P\left(\left|X_{(n)}-1\right| \geq e\right) & =P\left(X_{(n)} \geq 1+\varepsilon\right)+P\left(X_{(n)} \leq 1-\varepsilon\right) \\
+& =0+P\left(X_{(n)} \leq 1-c\right) .
+\end{aligned}
+$$ Next asing the fact that we have an tid sample, we can write
+
+$$
+P\left(X_{(n)} \leq 1-c\right)=P\left(X_i \leq 1-\varepsilon_1 i=1, \ldots n\right)=(1-c)^n
+$$
+
+which goes to 0 . So we have proved that $X_{\text {(i) }}$ converges to 1 in probability. However, if we take $c=t / n$, we then have
+
+$$
+P\left(X_{(n)} \leq 1-t / n\right)=(1-t / n)^n \rightarrow e^{-t}
+$$
+
+which, spon rearranging ylelds $$
+P\left(n\left(1-X_{(n)}\right) \leq t\right) \rightarrow 1-e^{-r_1}
+$$ that is, the random variable $n\left(1-X_{(n)}\right)$ converges in distribution to an exponential(1) random varibble.
+
+#### Exercise CB 5.18
+
+#### Exercise CB 5.23
+
+### Converge Almost Surely (related to [Strong Law of Large Number])
+
+#### Definition 5.5.6
+
+A sequence of random variables, $X_{1}, X_{2}, \ldots$, converges almost surely to a random variable $X$ if, for every $\epsilon>0$,
+
+$$
+P\left(\lim _{n \rightarrow \infty}\left|X_{n}-X\right|<\epsilon\right)=1
+$$
+
+Notice the similarity in the statements of Definitions 5.5.1 and 5.5.6. Although they look similar, they are very different statements, with Definition 5.5.6 much stronger To understand almost sure convergence, we must recall the basic definition of a random variable as given in Definition 1.4.1. A random variable is a real-valued function defined on a sample space $S$. If a sample space $S$ has elements denoted by $s$, then $X_{n}(s)$ and $X(s)$ are all functions defined on $S$. Definition 5.5.6 states that $X_{n}$ converges to $X$ almost surely if the functions $X_{n}(s)$ converge to $X(s)$ for all $s \in S$ except perhaps for $s \in N$, where $N \subset S$ and $P(N)=0$.
+
+#### Example 5.5.7 (Almost sure convergence)
+
+Let the sample space $S$ be the closed interval $[0,1]$ with the uniform probability distribution. Define random variables $X_{n}(s)=s+s^{n}$ and $X(s)=s$. For every $s \in[0,1), s^{n} \rightarrow 0$ as $n \rightarrow \infty$ and $X_{n}(s) \rightarrow s=X(s)$. However, $X_{n}(1)=2$ for every $n$ so $X_{n}(1)$ does not converge to $1=X(1)$. But since the convergence occurs on the set $[0,1)$ and $P([0,1))=1, X_{n}$ converges to $X$ almost surely.
+
+## Law of Large Number
+
+### Weak Law of Large Number
+
+#### Definition
+
+Let $X_{1}, X_{2}, \ldots$ be iid random variables with $\mathrm{E} X_{i}=\mu$ and Var $X_{i}=\sigma^{2}<\infty$. Define $\bar{X}_{n}=(1 / n) \sum_{i=1}^{n} X_{i}$. Then, for every $\epsilon>0$
+
+$$
+\lim _{n \rightarrow \infty} P\left(\left|\vec{X}_{n}-\mu\right|<\epsilon\right)=1
+$$
+
+that is, $\bar{X}_{n}$ converges in probability to $\mu$.
+
+Proof: The proof is quite simple, being a straightforward application of Chebychev's Inequality. We have, for every $\epsilon>0$,
+
+$$
+P\left(\left|\bar{X}_{n}-\mu\right| \geq \epsilon\right)=P\left(\left(\bar{X}_{n}-\mu\right)^{2} \geq \epsilon^{2}\right) \leq \frac{\mathrm{E}\left(\bar{X}_{n}-\mu\right)^{2}}{\epsilon^{2}}=\frac{\operatorname{Var} \bar{X}_{\backsim}}{\epsilon^{2}}=\frac{\sigma^{2}}{n \epsilon^{2}}
+$$
+
+Hence, $P\left(\left|\bar{X}_{n}-\mu\right|<\epsilon\right)=1-P\left(\left|\bar{X}_{n}-\mu\right| \geq \epsilon\right) \geq 1-\sigma^{2} /\left(n \epsilon^{2}\right) \rightarrow 1$, as $n \rightarrow \infty$.
+
+The Weak Law of Large Numbers (WLLN) quite elegantly states that, under general conditions, the sample mean approaches the population mean as $n \rightarrow \infty$. In fact, there are more general versions of the WLLN, where we need assume only that the mean is finite. However, the version stated in Theorem 5.5.2 is applicable in most practical situations.
+
+The property summarized by the WLLN, that a sequence of the "same" sample quantity approaches a constant as $n \rightarrow \infty$, is known as consistency.
+
+#### Example 5.5.3 (Consistency of $S^{2}$ )
+
+Suppose we have a sequence $X_{1}, X_{2}, \ldots$ of iid random variables with $\mathrm{E} X_{i}=\mu$ and $\operatorname{Var} X_{i}=\sigma^{2}<\infty$. If we define
+
+$$
+S_{n}^{2}=\frac{1}{n-1} \sum_{i=1}^{n}\left(X_{i}-\bar{X}_{n}\right)^{2},
+$$
+
+can we prove a WLLN for $S_{n}^{2}$ ? Using Chebychev's Inequality, we have
+
+$$
+P\left(\left|S_{n}^{2}-\sigma^{2}\right| \geq \epsilon\right) \leq \frac{\mathrm{E}\left(S_{n}^{2}-\sigma^{2}\right)^{2}}{\epsilon^{2}}=\frac{\operatorname{Var} S_{n}^{2}}{\epsilon^{2}}
+$$
+
+and thus, a sufficient condition that $S_{n}^{2}$ converges in probability to $\sigma^{2}$ is that Var $S_{n}^{2} \rightarrow$ 0 as $n \rightarrow \infty$.
+
+If $S_{n}^{2}$ is a consistent estimator of $\sigma^{2}$, then by Theorem 5.5.4, the sample standard deviation $S_{n}=\sqrt{S_{n}^{2}}=h\left(S_{n}^{2}\right)$ is a consistent estimator of $\sigma$. Note that $S_{n}$ is, in fact, a biased estimator of $\sigma$ (see Exercise 5.11), but the bias disappears asymptotically.
+
+### Strong Law of Large Number
+
+Theorem 5.5.9 (Strong Law of Large Numbers) Let $X_1, X_2, \ldots$ be iid random variaWes with $\mathrm{E} X_i=\mu$ and Var $X_i=\sigma^2<\infty$, and define $X_n=(1 / \mathrm{n}) \sum_{i=1}^n X_i$. Then, for enery $c>0$, $$
+P\left(\lim _{n \rightarrow \infty}\left|\hat{X}_n-\mu\right|<e\right)=1
+$$ that is, $X_n$ converges almost sturely to $\mu$. For both the Weak and Strong Laws of Large Numbers we had the sssumption of a finite variance. Although such an assumption is trae (and desirable) in most applications, it is, in fact, a stronger assumption than is needed. Both the weak and strong laws hold without this assumption. The only moment condition needed is that E $\left|X_i\right|<\infty$ (see Resnick 1999, Chapter 7, or Billingsiey 1995, Section 22).
+
+## CLT
+
+#### Theorem 5.5.14 (Central Limit Theorem)
+
+Let $X_1, X_2, \ldots$ be a sequence of iid random variables whose mgfs exist in a neighborhood of $O$ (that is, $M_{\boldsymbol{X}_i}(t)$ exists for $|t|<h$, for some positive $h$ ). Let $\mathrm{E} X_i=\mu$ and $\operatorname{Var} X_i=\sigma^2>0$. (Both $\mu$ and $\sigma^2$ are finite since the mgf exists.) Define $\bar{X}_n=(1 / n) \sum_{i=1}^n X_i$. Let $G_n(x)$ denote the cdf of $\sqrt{n}\left(\bar{X}_n-\mu\right) / \sigma$. Then, for any $x,-\infty<x<\infty$, $$
+\lim _{n \rightarrow \infty} G_n(x)=\int_{-\infty}^x \frac{1}{\sqrt{2 \pi}} e^{-y^2 / 2} d y ;
+$$ that is, $\sqrt{n}\left(\bar{X}_n-\mu\right) / \sigma$ has a limiting standard normal distribution.
+
+#### Proof of CLT
+
+#### Exercise CB 5.34
+
+## Delta Methods
+
+-   Application: how to use delta method to get the CI of non-linear regression
+
+-   
+
+### Taylar Series
+
+Definition 5.5.20 If a function $g(x)$ has derivatives of order $r$, that is, $g^{(r)}(x)=$ $\frac{d^{-}}{d x^{+}} g(x)$ exists, then for any constant $a$, the Taylor polynomial of order $r$ about $a$ is $$
+T_r(x)=\sum_{i=0}^r \frac{g^{(i)}(a)}{i !}(x-a)^i .
+$$ Taylor's major theorem, which we will not prove here, is that the remainder from the approximation, $g(x)-T_r(x)$, always tends to 0 faster than the highest-order explicit term. Theorem 5.5.21 (Taylor) If $g^{(r)}(a)=\left.\frac{d^r}{d x^r} g(x)\right|_{x=a}$ exists, then $$
+\lim _{x \rightarrow a} \frac{g(x)-T_r(x)}{(x-a)^r}=0 .
+$$ In general, we will not be concerned with the explicit form of the remainder. Since we are interested in approximations, we are just going to ignore the remainder. There are, however, many explicit forms, one useful one being $$
+g(x)-T_r(x)=\int_a^x \frac{g^{(r+1)}(t)}{r !}(x-t)^r d t
+$$ For the statistical application of Taylor's Theorem, we are most concerned with the first-order Taylor series, that is, an approximation using just the first derivative (taking $r=1$ in the above formulas). Furthermore, we will also find use for a multivariate Taylor series. Since the above detail is univariate, some of the following will have to be accepted on faith.
+
+Let $T_1, \ldots, T_k$ be random variables with means $\theta_1, \ldots, \theta_k$, and define $\mathbf{T}=\left(T_1, \ldots\right.$, $T_k$ ) and $\theta=\left(\theta_1, \ldots, \theta_k\right)$. Suppose there is a differentiable function $g(T)$ (an estimator of some parameter) for which we want an approximate estimate of variance. Define $$
+g_i^{\prime}(\theta)=\left.\frac{\partial}{\partial t_i} g(\mathbf{t})\right|_{t_1=\theta_3, \ldots, t_k=\theta_k}
+$$ The first-order Taylor series expansion of $g$ about $\theta$ is $$
+g(\mathbf{t})=g(\boldsymbol{\theta})+\sum_{i=1}^k g_i^{\prime}(\boldsymbol{\theta})\left(t_i-\theta_i\right)+\text { Remainder. }
+$$ For our statistical approximation we forget about the remainder and write $$
+g(t) \approx g(\theta)+\sum_{i=1}^k g_i^{\prime}(\theta)\left(t_i-\theta_i\right)
+$$ Now, take expectations on both sides of (5.5.7) to get $(5.5 .8)$ $$
+\begin{aligned}
+\mathrm{E}_\theta g(\mathbf{T}) & \approx g(\boldsymbol{\theta})+\sum_{i=1}^k g_i^{\prime}(\theta) \mathrm{E}_\theta\left(T_i-\theta_i\right) \\
+& =g(\boldsymbol{\theta}) .
+\end{aligned}
+$$ $\left(T_i\right.$ has mean $\left.\theta_i\right)$
+
+We can now approximate the variance of $g(\mathrm{~T})$ by
+
+$$
+\begin{aligned}
+\operatorname{Var}_\theta g(\mathbf{T}) & \approx \mathrm{E}_\theta\left([g(\mathbf{T})-g(\theta)]^2\right) \\
+& \approx \mathrm{E}_\theta\left(\left(\sum_{i=1}^k g_i^{\prime}(\theta)\left(T_i-\theta_i\right)\right)^2\right) \quad \text { (using (5.5.8)) } \\
+& =\sum_{i=1}^k\left[g_i^{\prime}(\theta)\right]^2 \operatorname{Var}_\theta T_i+2 \sum_{i>j} g_i^{\prime}(\theta) g_j^{\prime}(\theta) \operatorname{Cov}_\theta\left(T_i, T_j\right),
+\end{aligned}
+$$
+
+### Delta Method for Univariate
+
+```{=tex}
+Example 5.5.23 (Approximate mean and variance) Suppose $X$ is a random variable with $\mathrm{E}_\mu X=\mu \neq 0$. If we want to estimate a function $g(\mu)$, a first-order approximation would give us 
+
+$$
+g(X)=g(\mu)+g^{\prime}(\mu)(X-\mu)
+$$ 
+
+If we use $g(X)$ as an estimator of $g(\mu)$, we can say that approximately $$
+\begin{aligned}
+\mathrm{E}_\mu g(X) & \approx g(\mu), \\
+\operatorname{Var}_\mu g(X) & \approx\left[g^{\prime}(\mu)\right]^2 \operatorname{Var}_\mu X .
+\end{aligned}
+$$ For a specific example, take $g(\mu)=1 / \mu$. We estimate $1 / \mu$ with $1 / X$, and we can say $$
+\begin{aligned}
+\mathrm{E}_\mu\left(\frac{1}{X}\right) & \approx \frac{1}{\mu}, \\
+\operatorname{Var}_\mu\left(\frac{1}{X}\right) & \approx\left(\frac{1}{\mu}\right)^4 \operatorname{Var}_\mu X .
+\end{aligned}
+$$ Using these Taylor series approximations for the mean and variance, we get the following useful generalization of the Central Limit Theorem, known as the Delta Mathod
+
+
+\textbf{Theorem 5.5.24 (Delta Method) }
+
+Let $Y_n$ be a sequence of random variables that satisfies $\sqrt{n}\left(Y_n-\theta\right) \rightarrow \mathrm{n}\left(0, \sigma^2\right)$ in distribution. For a given function $g$ and a specific value of $\theta$, suppose that $g^{\prime}(\theta)$ exists and is not 0 . Then (5.5.10) $\sqrt{n}\left[g\left(Y_n\right)-g(\theta)\right] \rightarrow \mathrm{n}\left(0, \sigma^2\left[g^{\prime}(\theta)\right]^2\right)$ in distribution. Proof: The Taylor expansion of $g\left(Y_n\right)$ around $Y_n=\theta$ is $$
+g\left(Y_n\right)=g(\theta)+g^{\prime}(\theta)\left(Y_n-\theta\right)+\text { Remainder, }
+$$ where the remainder $\rightarrow 0$ as $Y_n \rightarrow \theta$. Since $Y_n \rightarrow \theta$ in probability it follows that the remainder $\rightarrow 0$ in probability. By applying Slutsky's Theorem (Theorem 5.5.17) to $$
+\sqrt{n}\left[g\left(Y_n\right)-g(\theta)\right]=g^{\prime}(\theta) \sqrt{n}\left(Y_n-\theta\right),
+$$ the result now follows. See Exercise 5.43 for details.
+
+Example 5.5.25 (Continuation of Example 5.5.23) Suppose now that we have the mean of a random sample $\bar{X}$. For $\mu \neq 0$, we have $$
+\sqrt{n}\left(\frac{1}{\bar{X}}-\frac{1}{\mu}\right) \rightarrow \mathrm{n}\left(0,\left(\frac{1}{\mu}\right)^4 \operatorname{Var}_\mu X_1\right)
+$$ in distribution. If we do not know the variance of $X_1$, to use the above approximation requires an estimate, say $S^2$. Moreover, there is the question of what to do with the $1 / \mu$ term, as we also do not know $\mu$. We can estimate everything, which gives us the approximate variance $$
+\widehat{\operatorname{Var}}\left(\frac{1}{\bar{X}}\right) \approx\left(\frac{1}{\bar{X}}\right)^4 S^2 .
+$$ Furthermore, as both $\bar{X}$ and $S^2$ are consistent estimators, we can again apply Slutsky's Theorem to conclude that for $\mu \neq 0$, $$
+\frac{\sqrt{n}\left(\frac{1}{X}-\frac{1}{\mu}\right)}{\left(\frac{1}{X}\right)^2 S} \rightarrow \mathrm{n}(0,1)
+$$
+```
+```{=tex}
+\textbf{Theorem: Second Order Delta Method}
+
+In some cases $\frac{d}{d\mu}g(\mu) = 0$, ie. score function, we need to use second order delta method:
+
+$$
+g(\hat\theta)|_{\theta_0=\mu} = g(\mu) + \underbrace{g'(\mu)}_{=0}(\hat\theta-\mu) + g''(\mu)\frac{(\hat\theta-\mu)^2}{2!} + ...
+$$
+
+$$
+\Rightarrow g(\hat\theta) - g(\mu) \approx
+\frac{g''(\mu)}{2}(\hat\theta-\mu)^2
+$$
+
+By applying slutsky's theorem, where $\sqrt{n}(\hat\theta\ - \mu )\to N(0,\sigma_{\theta}^2)$ in distribution
+
+$$
+\frac{2}{g''(\mu)}\frac{[g(\hat\theta) - g(\mu)]^2}{\sigma^2/n} \to N(0,1)^2 \sim \mathcal{X}^2_1
+$$
+```
+### Delta Method for Multivariate
+
+Given Taylor series:
+
+$$
+h(B)\approx h(\beta)+\nabla h(\beta)^{T}\cdot(B-\beta)
+$$
+
+We can have
+
+$$
+\begin{gathered}{{\mathrm{Var}(h(B))\approx\mathrm{Var}[h(\beta)+\nabla h(\beta)^{T}\cdot(B-\beta)]}}\\ 
+{{=\mathrm{Var}\bigl(h(\beta)+\nabla h(\beta)^{T}\cdot B-\nabla h(\beta)^{T}\cdot\beta\bigr(\beta)})}\\ 
+{{=\mathrm{Var}\bigl(\nabla h(\beta)^{T}\cdot B\bigr)}}\\ 
+{{=\nabla h(\beta)^{T}\cdot cov(B)\cdot\nabla h(\beta)}}\\
+{{=\nabla h(\beta)^{T}\cdot\frac{\sum}{n}\cdot\nabla h(\beta)}}
+\end{gathered}
+$$
+
+Where in this case the scale parameter is $\alpha = n$,
+
+So in general case we have:
+
+$$
+\sqrt{\alpha}\left(h(B)-h(\beta)\right)\stackrel{D}{\longrightarrow}{\cal N}\left(0,\nabla h(\beta)^{T}\cdot\Sigma\cdot\nabla h(\beta)\right)
+$$
+
+In regression case, we have scale parameter $\alpha = X^TX$ ($Var(\hat\beta) = X^TX^{-1}\Sigma$)
+
+# Statistics & Estimator
+
+## Sufficient Statistics
+
+### Definition
+
+### Factorization Theorem: How to find Sufficient Statistics
+
+\includepdf[page={6-7},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+
+## Minimum Sufficient Statistics and Complete Statistics
+
+### MSS
+
+-   The theorem only show MSS, but does not help finding MSS
+-   Complete statistics help finding MSS
+-   
+
+\includepdf[page={8-11},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+
+### Ancillary Statistics
+
+\includepdf[page={12},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+
+### Complete Statistics
+
+-   The binomial example is useful to understand and proof completeness
+
+\includepdf[page={13-16},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+
+## Estimator
+
+### MLE
+
+### Methods of Momment
+
+### Linear Regression
+
+## UMVUE
+
+### CRLB-Definition
+
+-   You always mess up how to take the expectation of fisher information
+
+-   Don't forget about the integral condition when takeing expectation
+
+-   You mess up the derivative of the bottom and the top
+
+-   fisher information **ONLY** applied to exponential family
+
+\includepdf[page={27-33},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+
+### Rao-Blackwell-Finding UMVUE(**Must be Unbiased**)
+
+-   Find by condition
+
+-   Find by proving it is unique/same
+
+-   How to find the conditional expectation?
+
+-   2021 Theory 5a-c is good practice
+
+\includepdf[page={34-37},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+
+### Lehmann-scheffe-Finding unique UMVUE
+
+-   Completeness
+-   More example see *Mathematics Statistics*
+
+\includepdf[page={38-39},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+
+## Consistency, Asymptotic Variance, efficency of MLE
+
+\includepdf[page={48-52},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+
+# Statistical Inference
+
+## Hypothesis Testing
+
+-   What about testing $H_0 :g(\theta) = a$ instead of $H_0 : \theta = a$
+
+-   
+
+### Power/Size of the Test
+
+\todo{update pages}
+
+\includepdf[page={60-61},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+
+### Most Powerful Test
+
+```{=tex}
+\todo{Need to review This part}
+\includepdf[page={62-65},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+
+\includepdf[page={66-67},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+```
+### Likelihood Ratio Test
+
+-   Learn how to construct Likelihood Ratio and how to find the cut off points
+
+| Year   | Questions | Outcome |
+|--------|-----------|---------|
+| 2021-T | 3.d       | Bad     |
+|        |           |         |
+|        |           |         |
+
+: Related Problem Sets
+
+```{=tex}
+
+\includepdf[page={55-59},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+```
+### Large Sample Test Method
+
+\includepdf[page={70-73},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+
+## Confidence Interval
+
+### Confidence Interval: Definition, Coverage Probability, Coverage Coefficient and Length
+
+\todo{You suck at this part}
+
+-   Check [Bob's 2023 final](file:///Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My%20Drive/GoodNotes/Phd.2022%20Spring/Final_Exam-jeffrey.pdf), you are really bad at it
+
+-   **Note that in a confidence set, which one is Random Variable and which one is not**
+
+-   How to find the coverage probablity
+
+\includepdf[page={39-41},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+
+### Unbiased CI
+
+\includepdf[page={42},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+
+### Find CI by Pivoting
+
+-   More example in homework4, that shit hard
+-   Need more example
+-   Example 7.7 is good to learn how to find pivot function
+
+\includepdf[page={46-47},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+
+### Find CI by MLE asymptotic
+
+-   See How in \[Consistency, Asymptotic Variance, efficiency of MLE\]
+-   Not a lot of example for this topics
+-   Not familiar with this topics
+
+\includepdf[page={50-52},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+
+### Find CI by Inverting Test
+
+-   More Example on Mathematics Statistics
+-   This is related to \[Delta Method\]
+
+\includepdf[page={74-75},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+
+## Two Sample Testing
+
+### Assumption
+
++--------------+-----------------------------+--------------------------+----------------+
+|              | Assumption                  | Normal                   | T-Distribution |
++==============+=============================+==========================+================+
+| A            | 1.  Independent             | Approx                   | NA             |
+|              |                             |                          |                |
+|              | 2.  Finite Variance         | by CLT, Lindeberg-Feller |                |
++--------------+-----------------------------+--------------------------+----------------+
+| B            | 1.  Independent             | Approx                   | Approx         |
+|              |                             |                          |                |
+|              | 2.  Finite Variance         | by CLT                   | By CLT         |
+|              |                             |                          |                |
+|              | 3.  Identical               |                          |                |
++--------------+-----------------------------+--------------------------+----------------+
+| C            | 1.  Independent             | Approx                   | Exact          |
+|              |                             |                          |                |
+|              | 2.  Unknown Finite Variance | by LLN                   |                |
+|              |                             |                          |                |
+|              | 3.  Identical               |                          |                |
+|              |                             |                          |                |
+|              | 4.  $X_i$ Normality         |                          |                |
++--------------+-----------------------------+--------------------------+----------------+
+
+: Hypothesis Testing
+
+\href{https://simonvandekar.bitbucket.io/notes3.html}{Simon's Note Assumption} \href{https://simonvandekar.bitbucket.io/notes4.html}{Simon's Note hypothesis testing}
+
+### Two sample t-test
+
+#### unequal variance
+
+Given $E[\bar X_1 - \bar X_2] = \mu_1 - \mu_2$
+
+by independent
+
+$$
+\begin{gathered}
+Var(\bar X_1 - \bar X_2) = \frac{\sum Var(X_1)}{n_1^2}+\frac{\sum Var(X_1)}{n_1^2} \\
+= \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}\\
+\mbox{for unknown variance, use sample variance approx}\\
+\approx \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}
+\end{gathered}
+$$
+
+Test statistics:
+
+$$
+T = \frac{\bar X_1 - \bar X_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
+$$
+
+Under Null hypothesis $\mu_1 = \mu_2$, $T$ follow t-distribution with degrees of freedom: $\frac{(s_1^2/n_1 + s_2^2/n_2)^2}{(s_1^2/n_1)^2/(n_1 - 1) + (s_2^2/n_2)^2/(n_2 - 1)}$
+
+#### equal variance
+
+Given $E[\bar X_1 - \bar X_2] = \mu_1 - \mu_2$
+
+by independent
+
+$$
+\begin{gathered}
+Var(\bar X_1 - \bar X_2) = \frac{\sum Var(X_1)}{n_1^2}+\frac{\sum Var(X_1)}{n_1^2} \\
+= \frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}\\
+\mbox{under null, use pooled sample variance approx}
+\end{gathered}
+$$
+
+because sample size can be different, using sample-size adjusted weighted estimator for the pooled sample variance
+
+$$
+s_{pool}^2 = \frac{n_1-1}{n_1+n_2-2} s_1^2 + \frac{n_2-1}{n_1+n_2-2} s_2^2
+$$
+
+Test statistics:
+
+$$
+T = \frac{\bar X_1 - \bar X_2}{\sqrt{\frac{s_p^2}{n_1} + \frac{s_p^2}{n_2}}}
+$$
+
+where $s_p$ is the pooled standard deviation:
+
+$$
+s_p^2 = \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}
+$$
+
+with degrees of freedom: $n_1 + n_2 - 2$
+
+# Bayesian
+
+```{=tex}
+Given a parameter $\theta$, which has a prior of $P_\Theta(\theta)$, observed data $X_i$, which has a likelihood function of $P(X_i|\theta) = L(\theta|X_i)$,
+
+The posterior probability is 
+
+$$
+\begin{gathered}
+P(\hat\theta|X) = \frac{P(\theta, X)}{P(X)}\\
+= \frac{P(X|\theta)P(\theta)}{P(X)}\\
+= \frac{L(\theta|X)P(\theta)}{\int_{\Theta|X}L(\theta|X)P(\theta)d\theta}\\
+\propto L(\theta|X)P(\theta)
+\end{gathered}
+$$
+```
+# Regression
+
+## Linear Regression
+
+### Projection
+
+### Assumption
+
+### Algreba Form
+
+## Saturated Model
+
+## Multivariate Regression
+
+### Spline
+
+#### Example: B5
+
+```{=tex}
+The most general form for $f$ is as follows:
+
+$$
+f(x)=\left\{\begin{array}{l}
+\alpha_0 \quad \text { if } 0<x \leq c \\
+\gamma_0+\gamma_1 x+\gamma_2 x^2 \text { if } x>c^{\prime}
+\end{array}\right.
+$$
+
+for real numbers $\alpha_0, \gamma_0, \gamma_1$, and $\gamma_2$. First, let's impose the continuity constraint, which is that:
+
+$$
+\lim _{x \rightarrow c^{-}} f(x)=\lim _{x \rightarrow c^{+}} f(x) \Rightarrow \alpha_0=\gamma_0+\gamma_1 c+\gamma_2 c^2 .
+$$
+
+Updating the function so far, it takes the following form:
+
+$$
+f(x)=\left\{\begin{array}{lr}
+\gamma_0+\gamma_1 c+\gamma_2 c^2 & \text { if } 0<x \leq c \\
+\gamma_0+\gamma_1 x+\gamma_2 x^2 & \text { if } x>c^{\prime}
+\end{array}\right.
+$$
+
+for real numbers $\gamma_0, \gamma_1$, and $\gamma_2$.
+Next, let's impose the differentiability constraint, which is that:
+
+$$
+\lim _{x \rightarrow c^{-}} f^{\prime}(x)=\lim _{x \rightarrow c^{+}} f^{\prime}(x) \Rightarrow 0=\gamma_1+2 \gamma_2 c \Rightarrow \gamma_1=-2 \gamma_2 c
+$$
+
+Updating the function so far, it takes the following form:
+
+$$
+f(x)=\left\{\begin{array}{lr}
+\gamma_0-2 \gamma_2 c^2+\gamma_2 c^2 & \text { if } 0<x \leq c \\
+\gamma_0-2 \gamma_2 c x+\gamma_2 x^2 & \text { if } x>c
+\end{array}= \begin{cases}\gamma_0+\gamma_2\left(-c^2\right) & \text { if } 0<x \leq c \\
+\gamma_0+\gamma_2\left(x^2-2 c x\right) & \text { if } x>c\end{cases}\right.
+$$
+
+for real numbers $\gamma_0$ and $\gamma_2$. Re-expressing as a basis expansion,
+
+$$
+f(x)=\beta_0+\beta_1\left[\left(x^2-2 c x\right) 1_{(c, \infty)}(x)-c^2 1_{(0, c]}(x)\right], \quad\left(\beta_0, \beta_1\right) \in R^2
+$$
+
+The basis function of interest is given by $h_c(x)=\left(x^2-2 c x\right) 1_{(c, \infty)}(x)-c^2 1_{(0, c]}(x)$.
+Now, $f^{\prime}(x)=h_c^{\prime}(x)=\beta_1(2 x-2 c) 1_{(c, \infty)}(x)$, which is continuous; further, $\lim _{x \rightarrow c^{-}} h_c^{\prime \prime}(x)=0$ and $\lim _{x \rightarrow c^{+}} h_c^{\prime \prime}(x)=2 \beta_1$, so $f^{\prime \prime}(x)$ clearly not defined at $x=c$.
+
+The unconstrained model uses four degrees of freedom, which makes sense because it involves an unrestricted constant (one degree of freedom) and an unrestricted quadratic function (three degrees of freedom). One degree of freedom is taken away by imposing the continuity constraint, and another is taken away by imposing the differentiability constraint. Therefore, the total number of degrees of freedom is given by 2, matching the number of basis functions.
+```
+## Weighted Regression
+
+## Transformed Regression
+
+## Logistic Regression
+
+## Multivariate Regression
+
+## Ordinal Regression
+
+## Poisson Regression
+
+## Longitudinal Regressoin
+
+## Survival Regression
+
+# Integral
+
+## Subsitution
+
+# Distribution
+
+## Discribe
+
+### Poisson
+
+Note: $Y\sim Poi$, $aY \not \sim Poi$ because Y is discrete.
+
+# Simulation
+
+\newpage
+
+# COMPS Practice
+
+{{< include _comps_practice.qmd >}}

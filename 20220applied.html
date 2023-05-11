@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Untitled</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="20220applied_files/libs/clipboard/clipboard.min.js"></script>
+<script src="20220applied_files/libs/quarto-html/quarto.js"></script>
+<script src="20220applied_files/libs/quarto-html/popper.min.js"></script>
+<script src="20220applied_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="20220applied_files/libs/quarto-html/anchor.min.js"></script>
+<link href="20220applied_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="20220applied_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="20220applied_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="20220applied_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="20220applied_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Untitled</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>rsv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"rsv.csv"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(rsv) <span class="sc">%&gt;%</span> print</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.4.2     ✔ purrr   1.0.1
+✔ tibble  3.2.1     ✔ dplyr   1.1.2
+✔ tidyr   1.3.0     ✔ stringr 1.5.0
+✔ readr   2.1.4     ✔ forcats 1.0.0
+Warning message:
+“package ‘ggplot2’ was built under R version 4.2.3”
+Warning message:
+“package ‘tibble’ was built under R version 4.2.3”
+Warning message:
+“package ‘dplyr’ was built under R version 4.2.3”
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+
+Attaching package: ‘kableExtra’
+
+
+The following object is masked from ‘package:dplyr’:
+
+    group_rows
+
+
+Rows: 1374 Columns: 12
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (12): id, age, sex, bwt, smoke, atopy, fhxasth, resp, wheeze, cyan, los,...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>spc_tbl_ [1,374 × 12] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ id     : num [1:1374] 1 2 3 4 5 6 7 8 9 10 ...
+ $ age    : num [1:1374] 1 2 12 9 4 3 2 12 3 12 ...
+ $ sex    : num [1:1374] 0 1 0 1 0 1 0 0 1 1 ...
+ $ bwt    : num [1:1374] 3 3 2 3.1 2.8 1.6 2.8 3.4 2 3.5 ...
+ $ smoke  : num [1:1374] 0 1 0 1 1 1 1 1 1 0 ...
+ $ atopy  : num [1:1374] 0 0 0 0 0 0 0 0 0 0 ...
+ $ fhxasth: num [1:1374] 1 0 0 0 0 0 1 0 0 1 ...
+ $ resp   : num [1:1374] 60 60 38 58 44 30 47 35 51 35 ...
+ $ wheeze : num [1:1374] 0 1 0 2 1 1 2 1 2 1 ...
+ $ cyan   : num [1:1374] 2 0 0 0 0 0 1 0 0 0 ...
+ $ los    : num [1:1374] 6 5 10 5 5 8 16 4 2 4 ...
+ $ mmi    : num [1:1374] 1 1 1 1 1 1 1 1 0 1 ...
+ - attr(*, "spec")=
+  .. cols(
+  ..   id = col_double(),
+  ..   age = col_double(),
+  ..   sex = col_double(),
+  ..   bwt = col_double(),
+  ..   smoke = col_double(),
+  ..   atopy = col_double(),
+  ..   fhxasth = col_double(),
+  ..   resp = col_double(),
+  ..   wheeze = col_double(),
+  ..   cyan = col_double(),
+  ..   los = col_double(),
+  ..   mmi = col_double()
+  .. )
+ - attr(*, "problems")=&lt;externalptr&gt; 
+NULL</code></pre>
+</div>
+</div>
+<ol type="a">
+<li>Investigate the association between age and length of hospital stay.</li>
+</ol>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">##(a)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(rsv<span class="sc">$</span>age,rsv<span class="sc">$</span>los) <span class="sc">%&gt;%</span> print</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.223165</code></pre>
+</div>
+</div>
+<ol start="2" type="a">
+<li>Establish a range of typical values for length of hospital stay for children with the following covariate profile: • Eight months of age. • Male. • No wheezing.</li>
+</ol>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>rsv <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(age <span class="sc">==</span> <span class="dv">8</span>,sex <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">lower =</span> <span class="fu">quantile</span>(los,<span class="fl">0.25</span>),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">upper =</span> <span class="fu">quantile</span>(los,<span class="fl">0.75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+<caption>A tibble: 1 × 2</caption>
+<thead>
+    <tr><th scope="col">lower</th><th scope="col">upper</th></tr>
+    <tr><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>3</td><td>5</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>rsv <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(wheeze <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">lower =</span> <span class="fu">quantile</span>(los,<span class="fl">0.25</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">upper =</span> <span class="fu">quantile</span>(los,<span class="fl">0.75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+<caption>A tibble: 1 × 2</caption>
+<thead>
+    <tr><th scope="col">lower</th><th scope="col">upper</th></tr>
+    <tr><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>3</td><td>7</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<ol start="3" type="a">
+<li>Develop a prediction model for major medical intervention based on the following variables:</li>
+</ol>
+<p>• Age. • Sex. • Birth weight. • Prior smoke exposure. • Atopy. • Family history of asthma. • Respiratory rate. • Wheezing. • Cyanosis.</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## when he said develop a model, does it mean I have free choice of the model?</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123123</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>train_index <span class="ot">=</span> <span class="fu">createDataPartition</span>(rsv<span class="sc">$</span>los,<span class="at">p =</span> <span class="fl">0.5</span>,<span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>train_rsv <span class="ot">=</span> rsv[train_index,]</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>test_rsv <span class="ot">=</span> rsv[<span class="sc">-</span>train_index,]</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>model_1 <span class="ot">=</span> <span class="fu">train</span>(<span class="at">x =</span> train_rsv <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>los) <span class="sc">%&gt;%</span> as.matrix,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">y =</span> train_rsv<span class="sc">$</span>los,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"cv"</span>,<span class="at">number =</span> <span class="dv">10</span>),</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">metric =</span> <span class="st">"RMSE"</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="fu">cv.glmnet</span>(</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>                <span class="at">x =</span> </span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">model.matrix</span>(los<span class="sc">~</span>age<span class="sc">*</span>sex<span class="sc">*</span>bwt<span class="sc">*</span>smoke<span class="sc">*</span>atopy<span class="sc">*</span>fhxasth<span class="sc">*</span>resp<span class="sc">*</span><span class="fu">as.factor</span>(wheeze)<span class="sc">*</span><span class="fu">as.factor</span>(cyan),</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>                             <span class="at">data =</span> train_rsv)[,<span class="sc">-</span><span class="dv">1</span>],</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>                <span class="at">y =</span> train_rsv<span class="sc">$</span>los,</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>                <span class="at">family =</span> <span class="st">"gaussian"</span>,</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>                <span class="at">type.measure =</span> <span class="st">"mse"</span>,</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>                <span class="at">nfolds =</span> <span class="dv">10</span>,</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>model_2 <span class="ot">=</span> <span class="fu">glmnet</span>(                </span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> </span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">model.matrix</span>(los<span class="sc">~</span>age<span class="sc">*</span>sex<span class="sc">*</span>bwt<span class="sc">*</span>smoke<span class="sc">*</span>atopy<span class="sc">*</span>fhxasth<span class="sc">*</span>resp<span class="sc">*</span><span class="fu">as.factor</span>(wheeze)<span class="sc">*</span><span class="fu">as.factor</span>(cyan),</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>                             <span class="at">data =</span> train_rsv)[,<span class="sc">-</span><span class="dv">1</span>],</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>                <span class="at">y =</span> train_rsv<span class="sc">$</span>los,</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>                <span class="at">alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>                <span class="at">lambda =</span> <span class="fl">0.1244</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Call:  cv.glmnet(x = model.matrix(los ~ age * sex * bwt * smoke * atopy *      fhxasth * resp * as.factor(wheeze) * as.factor(cyan), data = train_rsv)[,      -1], y = train_rsv$los, type.measure = "mse", nfolds = 10,      family = "gaussian") 
+
+Measure: Mean-Squared Error 
+
+    Lambda Index Measure    SE Nonzero
+min 0.1244    39   10.25 1.196      42
+1se 0.7288     1   10.82 1.202       0</code></pre>
+</div>
+</div>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Predicting error</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>((<span class="fu">predict</span>(model_1,<span class="at">newdata =</span> test_rsv) <span class="sc">-</span> test_rsv<span class="sc">$</span>los)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>((<span class="fu">predict</span>(model_2,<span class="at">newx =</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">model.matrix</span>(los<span class="sc">~</span>age<span class="sc">*</span>sex<span class="sc">*</span>bwt<span class="sc">*</span>smoke<span class="sc">*</span>atopy<span class="sc">*</span>fhxasth<span class="sc">*</span>resp<span class="sc">*</span><span class="fu">as.factor</span>(wheeze)<span class="sc">*</span><span class="fu">as.factor</span>(cyan),</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                             <span class="at">data =</span> test_rsv)[,<span class="sc">-</span><span class="dv">1</span>] </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">-</span> test_rsv<span class="sc">$</span>los)<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+7.206809368269
+</div>
+<div class="cell-output cell-output-display">
+11.5394849718764
+</div>
+</div>
+<ol start="8" type="1">
+<li>20 pts You are working with an investigative team that focuses on the use of magnetic resonance imaging (MRI) to understand variation in properties of the spinal cord. One goal in particular is to estimate specific quantiles of spinal cord volume (mm3) in the population. As is often the case, there are many approaches that could be used to accomplish this goal. Consider the following two estimation approaches for estimating the pth quantile of a distribution based on a total of n independently sampled subjects:</li>
+</ol>
+<p>• An estimate based on the presumption that spinal cord volume follows a normal distribution with mean μ and variance σ2: Q̂(p) = μ̂+Φ1(p)×̂σ, where μ̂ = Xn denotes the sample mean, ̂σ denotes the sample standard deviation, and Φ1(p) denotes the pth quantile of the standard normal distribution.</p>
+<p>• An estimate that does not make specific assumptions about the underlying distribution of spinal cord volume, based on the inverse of the empirical cumulative distribution function. This can be obtained in R through the command quantile(…, type = 1). Specifying the ‘type’ argument is important, as the default approach is different from the one described here.</p>
+<p>In this problem, your task is to compare these two estimation approaches using Monte Carlo (simulation) based techniques. Your code for all problems must be turned in as clearly labeled supplementary .R file.</p>
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## (a) simulation</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123123</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
