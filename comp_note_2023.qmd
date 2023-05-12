@@ -653,7 +653,25 @@ The joint pdf factors into functions of $w$ and $q$, and, hence, $W$ and $Q$ are
 
 # Asymptotic Probability
 
+## Necessary limits
+
+### Exponential
+
+$$
+\lim_{n\to\infty} (1 + \frac{a}{n})^n = e^a
+$$
+
+$$
+\lim_{n\to\infty} (1 - \frac{a}{n})^n = e^{-a}
+$$
+
 ## Necessary Inequality
+
+### Markov's Inequality
+
+$$
+P(X\ge s) \le E(X)/s
+$$
 
 ### Chebychev's Inequality
 
@@ -672,16 +690,55 @@ $$ Example
 
 ### Holder's Inequality
 
+```{=tex}
+Let X,Y be R.V and $q>1, p>1,\frac{1}{q} + \frac{1}{p} = 1$
+
+$$
+|E[XY]| \le E(|XY|) \le
+[E(|X|^p)]^{\frac{1}{q}}[E(|Y|^q)]^{\frac{1}{p}}
+$$
+
+$$
+\Rightarrow \sum|X_iY_i| \le 
+[(\|X|^p)]^{\frac{1}{q}}[E(|Y|^q)]^{\frac{1}{p}}
+$$
+```
 ### Cauchy's Inequality
 
+```{=tex}
+Extend from Holder,
+
+$$
+|E(XY)| \le E(|XY|) \le E[(X^2)]^{\frac{1}{2}}E[(Y^2)]^{\frac{1}{2}}
+$$
+
+Use this to show that $|cov(X,Y)|\le \sigma_x\sigma_y$
+
+$$
+\begin{gathered}
+\Rightarrow |cov(X,Y)| = |E[(X-\mu_x)(Y-\mu_y)]|\\
+\le E[|(X-\mu_x)(Y-\mu_y)|]\\
+\le E[(X-\mu_x)^2]^{\frac{1}{2}} * E[(Y-\mu_y)^2]^{\frac{1}{2}}\\
+= \sigma_x \sigma_y
+\end{gathered}
+$$
+
+$$
+\Rightarrow |\rho(x,y)| \le 1
+$$
+```
 ### Jenson's Inequality
 
 ```{=tex}
-Theorem 4.7.7 (Jensen's Inequality) For any random variable $X$, if $g(x)$ is $a$ convex function, then $$
+Theorem 4.7.7 (Jensen's Inequality) 
+
+For any random variable $X$, if $g(x)$ is $a$ convex function, then $$
 E g(X) \geq g(\mathrm{E} X)
 $$ Equality holds if and only if, for every line $a+b x$ that is tangent to $g(x)$ at $x=E X$, $P(g(X)=a+b X)=1$
 
-Proof: To establish the inequality, let $l(x)$ be a tangent line to $g(x)$ at the point $g(\mathrm{E} X)$. (Recall that $\mathrm{E} X$ is a constant.) Write $l(x)=a+b x$ for some $a$ and $b$. The situation is illustrated in Figure 4.7.2.
+Proof: 
+
+To establish the inequality, let $l(x)$ be a tangent line to $g(x)$ at the point $g(\mathrm{E} X)$. (Recall that $\mathrm{E} X$ is a constant.) Write $l(x)=a+b x$ for some $a$ and $b$. The situation is illustrated in Figure 4.7.2.
 
 Now, by the convexity of $g$ we have $g(x) \geq a+b x$. Since expectations preserve inequalities, $$
 \begin{array}{rlr}
@@ -699,11 +756,13 @@ One immediate application of Jensen's Inequality shows that $\mathrm{E} X^2 \geq
 
 To check convexity of a twice differentiable function is quite easy. The function $g(x)$ is convex if $g^{\prime \prime}(x) \geq 0$, for all $x$, and $g(x)$ is concave if $g^{\prime \prime}(x) \leq 0$, for all $x$. Jensen's Inequality applies to concave functions as well. If $g$ is concave, then $\mathrm{E} g(X) \leq g(\mathrm{E} X)$.
 ```
-### Markov's Inequality
-
 ### Boferroni's Inequality
 
-## Converge
+$$
+P(A\cap B) \ge P(A) + P(B) -1
+$$
+
+## Convergence
 
 ### Converge in Probability
 
@@ -747,10 +806,7 @@ $$
 Y_n+X_n\to^d aX \mbox{ in distribution}
 $$
 
-
 #### Continuous Mapping Theorem
-
-
 
 #### Example 5.5.11 (Maximum of uniforms)
 
@@ -1234,6 +1290,8 @@ with degrees of freedom: $n_1 + n_2 - 2$
 
 # Bayesian
 
+## Posterior
+
 ```{=tex}
 Given a parameter $\theta$, which has a prior of $P_\Theta(\theta)$, observed data $X_i$, which has a likelihood function of $P(X_i|\theta) = L(\theta|X_i)$,
 
@@ -1248,21 +1306,121 @@ P(\hat\theta|X) = \frac{P(\theta, X)}{P(X)}\\
 \end{gathered}
 $$
 ```
+## Credible Interval
+
+They characterize the range of $\theta$ that are most believable on the basis of the data (and the prior belief regarding $\theta$).
+
+In Bayesian world, we say there is a 95% probability that $\theta$ lies between the endpoints of a 95% credible interval (but the word "chance" in place of "probability" is still not ideal).
+
+Keep in mind: Talking about probability in the subjective sense, and not in the long-term frequency sense.
+
 # Regression
 
 ## Linear Regression
 
-### Projection
-
 ### Assumption
+
+For inference $\beta$ - i.i.d - We don't need *Linear* if N sufficient large and X random - We don't need *Normality* since we have CLT - We don't need *Homoscadecity aka. equal variance* since we have robost variance estimator and N sufficient large
+
+For sub-group specific mean $E[Y|X]$ - i.i.d - Linear - We don't need *normality* - We don't need *Homoscadecity aka. equal variance* since we have robust variance estimator and N sufficient large
+
+For prediction $E[\hat Y|X]$ - i.i.d - Linear - normality - Homoscadecity
 
 ### Algreba Form
 
-## Saturated Model
+$$
+\hat \beta = (X^TX)^{-1}X^Ty
+$$ - $\hat \beta$ is unbiased
+
+Assuming $E[y|X] = X\beta$:
+
+$$
+\begin{gathered}
+E[\hat \beta] = E[E[\hat\beta|X]]\\
+=E[(X^TX)^{-1}X^Ty|X]\\
+= (X^TX)^{-1}X^TE[y|X] = (X^TX)^{-1}X^TX\beta\\
+=\beta
+\end{gathered}
+$$
+
+-   Variance of $\hat \beta$
+
+Assumption: 1. error terms are pairwise independent 2. $Var[Y|X = x] = \sigma^2$ for all x (homoscedacity), this assumption can be elimated with robust estimator
+
+$$
+\begin{aligned}
+Var(\hat \beta) 
+&= Var[E[\hat \beta|X]] + E[Var(\hat \beta|X)] &
+\mbox{~ total variance}\\
+&= \cancel{Var(\beta)} + E[Var(\hat \beta|X)] &
+\mbox{~ constant}\\
+&= E[Var((X^TX)^{-1}X^Ty|X)] &
+\mbox{~ Linearity}\\
+&= E[(X^TX)^{-1}X^T*Var(y|X)*((X^TX)^{-1}X^T)^T] &
+ \mbox{~ algreba}\\
+&= E[(X^TX)^{-1}X^T*(\sigma^2I)*((X^TX)^{-1}X^T)^T] &
+ \mbox{~ homoscedacity}\\
+&= E[\sigma^2(X^TX)^{-1}]
+\end{aligned}
+$$
+
+Where $\sigma^2$ is estimated with MSE under homoscedasticity. Under heteroscedasticity we use sandwich variance. If there is heteroscedasticity, then the MSE can instead be interpreted as estimating the average within-group variance (i.e., averaged over the values of X).
+
+### Interpretation
+
+#### $\beta_0$:
+
+-   $\beta_0$ corresponds to a theoretical subgroup that is not well represented by the data
+-   If the predictor of interest, $X$, were something like height, then the intercept ($\beta_0$) would mark the mean HbA1c among those of height zero.
+-   Here, $\beta_0$ does not even carry a real-world interpretation, let alone the fact that our data cannot reasonably be used to reliably estimate it.
+-   by removing the intercept from the model we've actually made a very huge, untestable, and very often untrue assumption that the line goes through the origin! That is, by the above model, $E[Y |X = 0] = 0$ necessarily.
+
+#### $\beta_1$:
+
+**For** $E[Y|X] = \beta_0 + \beta_1x$
+
+$c\beta_1$ denotes difference in mean Y between subgroups differing in X by c units.
+
+**For** $E[log(Y)|X] = \beta_0 + \beta_1 (x)$
+
+$\beta_1 log(1+q)\Rightarrow$ Difference in mean Y between subgroups differing in X by (100 × q)%
+
+**For** $E[log(Y)|X] = \beta_0 + \beta_1x$
+
+$e^{\beta_1}$ denotes Geometric mean ratio, comparing subgroups differing in X by one unit.
+
+Right-skewness is again not a justifiable reason on its own to log-transform an outcome.
+
+#### Example:
+
+Consider following example:
+
+$$
+E[log(Y)|X] = \beta_0 + \beta_1 (log(x)-5)
+$$
+
+-   $exp(\beta_0) \Rightarrow$ Geometric mean Y among subgroup $log(x)-5 = 0 \rightarrow x = exp(5)$.
+-   $1.6^{\beta_1} \Rightarrow$ Geometric mean ratio of Y compareing subgroup differing in X by $exp(log(1.6)\beta_1) \rightarrow log(1.6)$ unit
 
 ## Multivariate Regression
 
+### Projection
+
+
+### Confounding/Percision Variable
+
+- Confounding Variable
+
+
+
+- Precision Variable
+
+
 ### Spline
+
+#### Degree's of Freedom and number of splines
+
+Number of splines = total degree of freedom(knots\*parameters) - number of constrains\* knots
 
 #### Example: B5
 
@@ -1321,11 +1479,53 @@ The unconstrained model uses four degrees of freedom, which makes sense because 
 ```
 ## Weighted Regression
 
-## Transformed Regression
+#### Gauss-Markov Theorem
 
-## Logistic Regression
+**Gauss-Markov Theorem**: Correct specified weighted least square estimator has the minumum variance ammong all **unbiased linear estimator** of $\beta$, if normality, linearity, no collinearity and finite variance assumptions are satisfied.
+
+aka. Best Linear Unbiased Estimator.
+
+-   The OLS estimator is the best (i.e., minimum variance) linear (in y) unbiased (for $\beta$) estimator of $\beta$ under the assumptions of the Gauss-Markov theoerm if the errors are homoscedastic.
+-   The OLS estimator is unbiased even if homoscedasticity does not hold.
+-   The OLS estimator is less efficient than WLS (with $W\propto V^{−1}$) if homoscedasticity does not hold.
+-   The sandwich variance is still valid even if $W\not\propto V^{−1}$, but WLS estimator is no longer BLUE.
+
+## Saturated Model
+
+**The idea of saturated model is that no information is borrowed across subgroup, such that we can estimate sub-group specific mean/odd/...**
+
+-   A model is saturated if the number of parameters and constrains add up to the number of groups
+
+-   *Example: Comps Applied 2022.3*
+
+|       | Y = 1 | Y = 2 | Y = 3 |
+|-------|-------|-------|-------|
+| X = 0 | a     | d     | g     |
+| X = 1 | b     | e     | h     |
+| X = 2 | c     | f     | i     |
+
+$$
+logit(P(Y\ge1|X=x)) = \alpha_0 + \alpha_1 I(x\ge 1)
+$$
+
+- This is a logistic model, and we have 4 groups ($\{x =0, x\ge 1\}\cap\{Y=0,Y\ge1\}$), and we have 2 paramteres and 2 constrains ($P(Y\ge1|X=x) + P(Y=0|X=x) = 1$) so the model is saturated.
+
+$$
+log(\frac{P(Y=k|x=x)}{P(Y=0|X=x)})
+= \beta_{0k} + \beta_{1k}I(x=1)+\beta_{2k}I(x=2), k=1,2
+$$
+
+- This is a multinomial model, we have 9 groups(3*3), and the model have 6 parameter($\beta_{ij}$) and 3 constrains $\sum_k P(Y=k|X=x) = 1$, so the model is saturated.
+
+$$
+logit(P(Y\le k|X=x)) = \gamma_{0k} - \gamma_1 I(x=1) - \gamma_2 I(x=2), k = 0,1
+$$
+
+- This is a proportional odds model, this model cannot be saturated because it's borrowing information from the left-side of the equation.
 
 ## Multivariate Regression
+
+## Logistic Regression
 
 ## Ordinal Regression
 
