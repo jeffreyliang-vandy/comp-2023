@@ -5,3 +5,6 @@ reference/
 *alias
 *.pper
 *.json
+*.Rproj
+.Rproj.user/*
+.Rproj.user

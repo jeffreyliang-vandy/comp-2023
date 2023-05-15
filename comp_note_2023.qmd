@@ -320,6 +320,8 @@ establishing (4.4.4).
 ```
 ### Hierarchical Model
 
+- \href{https://vanderbilt365-my.sharepoint.com/:b:/g/personal/zhuohui_liang_vanderbilt_edu/ESFMUceMOKRDkzTV2dPVhDMBZ4-15iHkKeJklYNO6Sm8XA?e=yLNMxv}{Amber's Homework 6(Pretty Bad)}
+
 $$
 E[X] = E[E[X|Y]] = E[E[E[X|Y,Z]]] = ...
 $$
@@ -397,7 +399,7 @@ $$
 &= \Sigma_{11}-\Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21}
 \end{aligned}
 $$
-```
+
 So
 
 $$
@@ -420,6 +422,8 @@ f_{X|Y} = N\{
 \sigma_x^2(1-\rho)
 \}
 $$
+```
+
 
 #### Example exercise 4.45
 
@@ -559,9 +563,23 @@ a bivariate normal pdf.
 ```
 ### Multinomial
 
+- \href{https://vanderbilt365-my.sharepoint.com/:b:/g/personal/zhuohui_liang_vanderbilt_edu/EcpcWjslfqFMhSFDV1acnu4BlsC8W3FYBvJXu-OGRAlYdg?e=wUYtoO}{Amber's Homework 5}
+
 ## Transformation/Location Scale Family
 
+- \href{https://vanderbilt365-my.sharepoint.com/:b:/g/personal/zhuohui_liang_vanderbilt_edu/EeDIvgbReHtEvv3cmyCIVNQBEMzJBaP6oIAeWnsE8JxqSA?e=5sb2dT}{Amber's Homework 8}
+
+- \href{https://vanderbilt365-my.sharepoint.com/:b:/g/personal/zhuohui_liang_vanderbilt_edu/EWekEOvn5kxEuhP7a7t3sUwBnw3N9CdC4op28I5UCbhe3g?e=WaG2Sk}{Amber's Homework 7}
+
+
+
 ### Univariate Transformation
+
+#### Discrete Random Variable
+
+**No jacobian**
+
+#### Continuous Random Variable
 
 ### Location Scale Family
 
@@ -577,6 +595,127 @@ a bivariate normal pdf.
 |        |          |                     |
 
 #### Exercise CB 5.17
+
+#### Homework 4.16
+
+```{=tex}
+(a)
+$X\sim Geometric(p),Y\sim Geometric(p), Y \perp X,$ Show that $U - min(X,Y), V = X-Y$ is independent:
+
+$$
+f_{X,Y} = p(1-p)^{x-1} p(1-p)^{y-1} I_{1,2...}(x)I_{1,2...}(y)
+$$
+\begin{itemize}
+\item when $x<y$
+
+$$
+\begin{aligned}
+\begin{cases}
+u = x\\
+v = x-y
+\end{cases}
+\Rightarrow
+\begin{cases}
+x = u\\
+y = u-v, v<0~b/c~x<y
+\end{cases}\\
+\begin{cases}
+u = x \in \{1,2,...\}\\
+v = x-y \in \{-1,-2,...\}
+\end{cases}
+\end{aligned}
+$$
+
+\textbf{IT'S DISCRETE, NO JACOBIAN}
+
+$$
+\begin{gathered}
+P(U=u,V=v) = p(1-p)^{u-1} p(1-p)^{u-v-1}I_{1,2...}(u) I_{-1,-2...}(v)\\
+= p^2(1-p)^{2u-1}I_{1,2...}(u) (1-p)^{-v-1}I_{-1,-2...}(v)
+\end{gathered}
+$$
+
+\item when $x>y$
+$$
+\begin{gathered}
+P(U=u,V=v) = p(1-p)^{u-1} p(1-p)^{u-v-1}I_{1,2...}(u) I_{-1,-2...}(v)\\
+= p^2(1-p)^{2u-1}I_{1,2...}(u) (1-p)^{-v-1}I_{1,2...}(v)
+\end{gathered}
+$$
+
+\item when $x = y$
+
+$$
+u = x = y, v = 0
+$$
+
+$$
+\begin{gathered}
+P(U=u,V=v) = p(1-p)^{u-1} p(1-p)^{u-v-1}I_{1,2...}(u) I_{-1,-2...}(v)\\
+= p^2(1-p)^{2u-2}I_{1,2...}(u) I_{-1,-2...}(v)
+\end{gathered}
+$$
+\textbf{see that indicator function is necessary to show independent, don't be lazy}
+\end{itemize}
+
+So $U \perp V$ by factorization.
+```
+
+```{=tex}
+(b) Find the distribution of $Z = X/(X + Y)$, where we define $Z=O$if $X+Y =0.$
+
+Set:
+$$
+\begin{gathered}
+\begin{cases}
+V = X\\
+Z = X/(X+Y)
+\end{cases}
+\Rightarrow
+\begin{cases}
+X = V\\
+ZX + ZY = X
+\end{cases}\\
+\Rightarrow
+\begin{cases}
+V = X\\
+Y = \frac{X-ZX}{Z}
+\end{cases}
+\Rightarrow
+\begin{cases}
+V = X\\
+Y = V(1-Z)/Z
+\end{cases}
+\end{gathered}
+$$
+
+$$
+V\in \{1,2,...\},
+Z\in \{0,1\}
+$$
+
+$$
+\begin{gathered}
+P_{V,Z} = p(1-p)^{v-1} p(1-p)^{v(1-z)/z -1} I_{1,...}(v) I_{(0,1)}(z)\\
+\Rightarrow
+P_Z = \sum_v^\infty P_{V=v,Z}\\
+= \frac{p}{1-p}^2 \sum_v (1-p)^{v/Z}\\
+= \frac{p}{1-p}^2 \sum_v [(1-p)^{1/Z}]^v\\
+\end{gathered}
+$$
+
+Now, let $Y = V-1$, such that $Y \in \{0,1,...\}$
+
+By $\sum_{v=0}^\infty r^k = \frac{1}{1-r}$:
+
+$$
+\begin{gathered}
+P_Z = \frac{p}{1-p}^2 (1-p)^{1/Z}\sum_v [(1-p)^{1/Z}]^{v-1}\\
+= \frac{p}{1-p}^2 (1-p)^{1/Z}\sum_v [(1-p)^{1/Z}]^{y}\\
+= \frac{p}{1-p}^2 (1-p)^{1/Z}\frac{1}{1-(1-p)^{1/Z}} I_{(0,1)}(z)
+\end{gathered}
+$$
+```
 
 ## Order Statistics
 
@@ -652,6 +791,8 @@ The joint pdf factors into functions of $w$ and $q$, and, hence, $W$ and $Q$ are
 #### Example: 2021-T 3a-b
 
 # Asymptotic Probability
+
+\href{https://vanderbilt365-my.sharepoint.com/:b:/g/personal/zhuohui_liang_vanderbilt_edu/EVTsbxaxHDJIknUwiJP7HFQB4m7_8pXbKOfeD1CeSghvWA?e=Zht9D5}{Amber's Homework9}
 
 ## Necessary limits
 
@@ -754,7 +895,11 @@ $$ as was to be shown. If $g(x)$ is linear, equality follows from properties of 
 
 One immediate application of Jensen's Inequality shows that $\mathrm{E} X^2 \geq(\mathrm{E} X)^2$, since $g(x)=x^2$ is convex. Also, if $x$ is positive, then $1 / x$ is convex; hence $\mathrm{E}(1 / X) \geq 1 / \mathrm{E} X$, another useful application.
 
-To check convexity of a twice differentiable function is quite easy. The function $g(x)$ is convex if $g^{\prime \prime}(x) \geq 0$, for all $x$, and $g(x)$ is concave if $g^{\prime \prime}(x) \leq 0$, for all $x$. Jensen's Inequality applies to concave functions as well. If $g$ is concave, then $\mathrm{E} g(X) \leq g(\mathrm{E} X)$.
+To check convexity of a twice differentiable function is quite easy. 
+
+The function $g(x)$ is convex if $g^{\prime \prime}(x) \geq 0$, for all $x$, and $g(x)$ is concave if $g^{\prime \prime}(x) \leq 0$, for all $x$. 
+
+Jensen's Inequality applies to concave functions as well. If $g$ is concave, then $\mathrm{E} g(X) \leq g(\mathrm{E} X)$.
 ```
 ### Boferroni's Inequality
 
@@ -870,7 +1015,7 @@ that is, $\bar{X}_{n}$ converges in probability to $\mu$.
 Proof: The proof is quite simple, being a straightforward application of Chebychev's Inequality. We have, for every $\epsilon>0$,
 
 $$
-P\left(\left|\bar{X}_{n}-\mu\right| \geq \epsilon\right)=P\left(\left(\bar{X}_{n}-\mu\right)^{2} \geq \epsilon^{2}\right) \leq \frac{\mathrm{E}\left(\bar{X}_{n}-\mu\right)^{2}}{\epsilon^{2}}=\frac{\operatorname{Var} \bar{X}_{\backsim}}{\epsilon^{2}}=\frac{\sigma^{2}}{n \epsilon^{2}}
+P\left(\left|\bar{X}_{n}-\mu\right| \geq \epsilon\right)=P\left(\left(\bar{X}_{n}-\mu\right)^{2} \geq \epsilon^{2}\right) \leq \frac{\mathrm{E}\left(\bar{X}_{n}-\mu\right)^{2}}{\epsilon^{2}}=\frac{\operatorname{Var} \bar{X}_{n}}{\epsilon^{2}}=\frac{\sigma^{2}}{n \epsilon^{2}}
 $$
 
 Hence, $P\left(\left|\bar{X}_{n}-\mu\right|<\epsilon\right)=1-P\left(\left|\bar{X}_{n}-\mu\right| \geq \epsilon\right) \geq 1-\sigma^{2} /\left(n \epsilon^{2}\right) \rightarrow 1$, as $n \rightarrow \infty$.
@@ -899,9 +1044,28 @@ If $S_{n}^{2}$ is a consistent estimator of $\sigma^{2}$, then by Theorem 5.5.4,
 
 ### Strong Law of Large Number
 
-Theorem 5.5.9 (Strong Law of Large Numbers) Let $X_1, X_2, \ldots$ be iid random variaWes with $\mathrm{E} X_i=\mu$ and Var $X_i=\sigma^2<\infty$, and define $X_n=(1 / \mathrm{n}) \sum_{i=1}^n X_i$. Then, for enery $c>0$, $$
-P\left(\lim _{n \rightarrow \infty}\left|\hat{X}_n-\mu\right|<e\right)=1
-$$ that is, $X_n$ converges almost sturely to $\mu$. For both the Weak and Strong Laws of Large Numbers we had the sssumption of a finite variance. Although such an assumption is trae (and desirable) in most applications, it is, in fact, a stronger assumption than is needed. Both the weak and strong laws hold without this assumption. The only moment condition needed is that E $\left|X_i\right|<\infty$ (see Resnick 1999, Chapter 7, or Billingsiey 1995, Section 22).
+Theorem 5.5.9 (Strong Law of Large Numbers) Let $X_1, X_2, \ldots$ be iid random variables with $\mathrm{E} X_i=\mu$ and Var $X_i=\sigma^2<\infty$, and define $X_n=(1 / \mathrm{n}) \sum_{i=1}^n X_i$. Then, for enery $c>0$,
+
+$$
+P\left(\lim _{n \rightarrow \infty}\left|\hat{X}_n-\mu\right|<\epsilon\right)=1
+$$
+
+that is, $X_n$ converges almost surely to $\mu$. For both the Weak and Strong Laws of Large Numbers we had the sssumption of a finite variance. Although such an assumption is true (and desirable) in most applications, it is, in fact, a stronger assumption than is needed. Both the weak and strong laws hold without this assumption. The only moment condition needed is that E $\left|X_i\right|<\infty$ (see Resnick 1999, Chapter 7, or Billingsiey 1995, Section 22).
+
+#### Excercise 5.38
+
+```{=tex}
+The following extensions of the inequalities established in Exercise 3.45 are useful in establishing a SLLN (see Miscellanea 5.8.4). Let $X_1, X_2, \ldots, X_n$ be iid with mgf $M_X(t),-h<t<h$, and let $S_n=\sum_{i=1}^n X_i$ and $\bar{X}_n=S_n / n$
+(a) Show that $P\left(S_n>a\right) \leq e^{-a t}\left[M_X(t)\right]^n$, for $0<t<h$, and $P\left(S_n \leq a\right) \leq$ $e^{-a t}\left[M_X(t)\right]^n$, for $-h<t<0$
+(b) Use the facts that $M_X(0)=1$ and $M_X^{\prime}(0)=\mathrm{E}(X)$ to show that, if $\mathrm{E}(X)<0$, then there is a $0<c<1$ with $P\left(S_n>a\right) \leq c^n$. Establish a similar bound for $P\left(S_n \leq a\right)$
+(c) Define $Y_i=X_i-\mu-\varepsilon$ and use the above argument, with $a=0$, to establish that $P\left(\bar{X}_n-\mu>\varepsilon\right) \leq c^n$.
+(d) Now define $Y_i=-X_i+\mu-\varepsilon$, establish an equality similar to part (c), and combine the two to get
+$$
+P\left(\left|\bar{X}_n-\mu\right|>\varepsilon\right) \leq 2 c^n \text { for some } 0<c<1
+$$
+
+HINT: Hint: For part (b) you may assume that a > 0 and establish the upper bound on P(Sn>a). Use the definition Mx(0) = lim Mx() - Mx(0) - do to show that there exists 8 >0 such that Mx(8) < 1. Use this result to define a suitable c and apply part (a). You may stop here since the result for a > 0 is all that is needed to complete parts (c) and (d). The trick to getting the upper bound on P(Sn <a) is to assume that E(X) > 0. For parts (c) and (d), apply (b) with a = 0.
+```
 
 ## CLT
 
@@ -913,7 +1077,60 @@ $$ that is, $\sqrt{n}\left(\bar{X}_n-\mu\right) / \sigma$ has a limiting standar
 
 #### Proof of CLT
 
-#### Exercise CB 5.34
+[*Thought process: since to prove converge in probability, use MGF and combine it with taylor series*]{.underline}
+
+```{=tex}
+
+Proof of Theorem 5.5.14: We will show that, for $|t|<h$, the mgf of $\sqrt{n}\left(\bar{X}_n-\mu\right) / \sigma$ converges to $e^{t^2 / 2}$, the mgf of a $\mathrm{n}(0,1)$ random variable.
+
+Define $Y_i=\left(X_i-\mu\right) / \sigma$, and let $M_Y(t)$ denote the common mgf of the $Y_i \mathrm{~s}$, which exists for $|t|<\sigma h$ and is given by Theorem 2.3.15. Since
+$$
+\frac{\sqrt{n}\left(\bar{X}_n-\mu\right)}{\sigma}=\frac{1}{\sqrt{n}} \sum_{i=1}^n Y_i
+$$
+we have, from the properties of mgfs (see Theorems 2.3.15 and 4.6.7),
+$$
+\begin{aligned}
+M_{\sqrt{n}\left(\hat{X}_n-\mu\right) / \sigma}(t) & =M_{\Sigma_{i=1}^n} Y_i / \sqrt{n}(t) \\
+& =M_{\Sigma_{i=1}^n} Y_i\left(\frac{t}{\sqrt{n}}\right) \\
+& =\left(M_Y\left(\frac{t}{\sqrt{n}}\right)\right)^n .
+\end{aligned}
+$$
+We now expand $M_Y(t / \sqrt{n}$ ) in a Taylor series (power series) around 0. (See Definition 5.5.20.) We have
+$$
+M_Y\left(\frac{t}{\sqrt{n}}\right)=\sum_{k=0}^{\infty} M_Y^{(k)}(0) \frac{(t / \sqrt{n})^k}{k !}
+$$
+where $M_Y^{(k)}(0)=\left.\left(d^k / d t^k\right) M_Y(t)\right|_{t=0}$. Since the mgfs exist for $|t|<h$, the power series expansion is valid if $t<\sqrt{n} \sigma h$.
+
+Using the facts that $M_Y^{(0)}=1, M_Y^{(1)}=0$, and $M_Y^{(2)}=1$ (by construction, the mean and variance of $Y$ are 0 and 1$)$, we have
+$$
+M_Y\left(\frac{t}{\sqrt{n}}\right)=1+\frac{(t / \sqrt{n})^2}{2 !}+R_Y\left(\frac{t}{\sqrt{n}}\right),
+$$
+238
+PROPERTIES OF A RANDOM SAMPLE
+Section 5.6
+where $R_Y$ is the remainder term in the Taylor expansion,
+$$
+R_Y\left(\frac{t}{\sqrt{n}}\right)=\sum_{k=3}^{\infty} M_Y^{(k)}(0) \frac{(t / \sqrt{n})^k}{k !}
+$$
+An application of Taylor's Theorem (Theorem 5.5.21) shows that, for fixed $t \neq 0$, we have
+$$
+\lim _{n \rightarrow \infty} \frac{R_Y(t / \sqrt{n})}{(t / \sqrt{n})^2}=0
+$$
+Since $t$ is fixed, we also have
+$$
+\lim _{n \rightarrow \infty} \frac{R_Y(t / \sqrt{n})}{(1 / \sqrt{n})^2}=\lim _{n \rightarrow \infty} n R_Y\left(\frac{t}{\sqrt{n}}\right)=0,
+$$
+and (5.5.5) is also true at $t=0$ since $R_Y(0 / \sqrt{n})=0$. Thus, for any fixed $t$, we can write
+$$
+\begin{aligned}
+\lim _{n \rightarrow \infty}\left(M_Y\left(\frac{t}{\sqrt{n}}\right)\right)^n & =\lim _{n \rightarrow \infty}\left[1+\frac{(t / \sqrt{n})^2}{2 !}+R_Y\left(\frac{t}{\sqrt{n}}\right)\right]^n \\
+& =\lim _{n \rightarrow \infty}\left[1+\frac{1}{n}\left(\frac{t^2}{2}+n R_Y\left(\frac{t}{\sqrt{n}}\right)\right)\right]^n \\
+& =e^{t^2 / 2}
+\end{aligned}
+$$
+by an application of Lemma 2.3.14, where we set $a_n=\left(t^2 / 2\right)+n R_Y(t / \sqrt{n})$. (Note that (5.5.5) implies that $a_n \rightarrow t^2 / 2$ as $n \rightarrow \infty$.) Since $e^{t^2 / 2}$ is the mgf of the $n(0,1)$ distribution, the theorem is proved.
+```
+
 
 ## Delta Methods
 
@@ -1057,7 +1274,7 @@ In regression case, we have scale parameter $\alpha = X^TX$ ($Var(\hat\beta) = X
 
 -   The theorem only show MSS, but does not help finding MSS
 -   Complete statistics help finding MSS
--   
+-   \href{https://vanderbilt365.sharepoint.com/:b:/s/contemporary.statistical.inference/EZ9WY0CEUaVPuEmFoxn4clwBnSIu6etovtXibsBcNLbvQA?e=qNXZ6I}{Bob's Homework 1}
 
 \includepdf[page={8-11},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
 
@@ -1199,31 +1416,42 @@ In regression case, we have scale parameter $\alpha = X^TX$ ($Var(\hat\beta) = X
 
 \includepdf[page={74-75},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
 
+## P-value
+
+\includepdf[page={78-79},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+
+
+## One Sample Testing
+
+*Much like Two Sample Testing but just cannot relax the identical assumption*
+
 ## Two Sample Testing
 
 ### Assumption
 
-+--------------+-----------------------------+--------------------------+----------------+
-|              | Assumption                  | Normal                   | T-Distribution |
-+==============+=============================+==========================+================+
-| A            | 1.  Independent             | Approx                   | NA             |
-|              |                             |                          |                |
-|              | 2.  Finite Variance         | by CLT, Lindeberg-Feller |                |
-+--------------+-----------------------------+--------------------------+----------------+
-| B            | 1.  Independent             | Approx                   | Approx         |
-|              |                             |                          |                |
-|              | 2.  Finite Variance         | by CLT                   | By CLT         |
-|              |                             |                          |                |
-|              | 3.  Identical               |                          |                |
-+--------------+-----------------------------+--------------------------+----------------+
-| C            | 1.  Independent             | Approx                   | Exact          |
-|              |                             |                          |                |
-|              | 2.  Unknown Finite Variance | by LLN                   |                |
-|              |                             |                          |                |
-|              | 3.  Identical               |                          |                |
-|              |                             |                          |                |
-|              | 4.  $X_i$ Normality         |                          |                |
-+--------------+-----------------------------+--------------------------+----------------+
++--------------+-----------------------------+-------------------------------------+----------------------------+
+|              | Assumption                  | Normal                              | T-Distribution             |
++==============+=============================+=====================================+============================+
+| A            | 1.  Independent             | *Approx*                            | NA                         |
+|              |                             |                                     |                            |
+|              | 2.  Finite Variance         | by CLT,                             |                            |
+|              |                             |                                     |                            |
+|              |                             | Lindeberg-Feller for identicality   |                            |
++--------------+-----------------------------+-------------------------------------+----------------------------+
+| B            | 1.  Independent             | *Approx*                            | *Approx*                   |
+|              |                             |                                     |                            |
+|              | 2.  Finite Variance         | by CLT, Sluskey, and N large enough | By CLT                     |
+|              |                             |                                     |                            |
+|              | 3.  Identical               |                                     |                            |
++--------------+-----------------------------+-------------------------------------+----------------------------+
+| C            | 1.  Independent             | *Approx*                            | *equal variance: Exact*    |
+|              |                             |                                     |                            |
+|              | 2.  Unknown Finite Variance | by LLN                              | *unequal variance: Approx* |
+|              |                             |                                     |                            |
+|              | 3.  Identical               |                                     |                            |
+|              |                             |                                     |                            |
+|              | 4.  $X_i$ Normality         |                                     |                            |
++--------------+-----------------------------+-------------------------------------+----------------------------+
 
 : Hypothesis Testing
 
@@ -1231,7 +1459,7 @@ In regression case, we have scale parameter $\alpha = X^TX$ ($Var(\hat\beta) = X
 
 ### Two sample t-test
 
-#### unequal variance
+#### Unequal variance
 
 Given $E[\bar X_1 - \bar X_2] = \mu_1 - \mu_2$
 
@@ -1254,7 +1482,9 @@ $$
 
 Under Null hypothesis $\mu_1 = \mu_2$, $T$ follow t-distribution with degrees of freedom: $\frac{(s_1^2/n_1 + s_2^2/n_2)^2}{(s_1^2/n_1)^2/(n_1 - 1) + (s_2^2/n_2)^2/(n_2 - 1)}$
 
-#### equal variance
+-   *Because we need to estimate the degrees of freedom, this test required a larger sample size than equal variance test.*
+
+#### Equal variance
 
 Given $E[\bar X_1 - \bar X_2] = \mu_1 - \mu_2$
 
@@ -1366,6 +1596,22 @@ $$
 
 Where $\sigma^2$ is estimated with MSE under homoscedasticity. Under heteroscedasticity we use sandwich variance. If there is heteroscedasticity, then the MSE can instead be interpreted as estimating the average within-group variance (i.e., averaged over the values of X).
 
+### Projection
+
+$$
+H = X(X^TX)^{-1}X^T
+$$
+
+$$
+H^T = H; H^TH = H
+$$
+
+so that we have the projection:
+
+$$
+\hat y = Hy = x\beta
+$$
+
 ### Interpretation
 
 #### $\beta_0$:
@@ -1404,23 +1650,53 @@ $$
 
 ## Multivariate Regression
 
-### Projection
-
-
 ### Confounding/Percision Variable
 
-- Confounding Variable
+**Confounding Variable**
 
+-   we pre-specify variables we believe to be highly likely confounders, and then perhaps some other variables that we believe may be potential confounders. Then, you can look at the following three (pre-specified) models:
 
+1.  Model 1 (unadjusted).
+2.  Model 2 (adjusting for likely confounders).
+3.  Model 3 (adjusting for all potential confounders measured).
 
-- Precision Variable
+-   If Z is caused by X, then we should not adjust for Z.
+-   Z is a mediator, Adjusting for Z is not appropriate.
 
+**Precision Variable**
+
+-   Specifically in the case of **linear regression**(different in logistic), adjustment for a variable of this type reduces variance in estimating association between X and Y without changing its value.
+
+$$
+\begin{gathered}
+X \perp Z\\
+E[Y|X=x] = \beta_0 + \beta_1X\\
+E[Y|X=x,Z=z] = \alpha_0 + \alpha_1X + \alpha_2Z\\
+\Rightarrow\hat \beta_1 = \hat \alpha_1\\
+\Rightarrow Var(\hat \beta_1) \ge Var(\hat \alpha)
+\end{gathered}
+$$
+
+-   This property, known as collapsibility, holds for linear regression models (but not for all models, as we will see).
 
 ### Spline
 
 #### Degree's of Freedom and number of splines
 
-Number of splines = total degree of freedom(knots\*parameters) - number of constrains\* knots
+Number of splines = total degree of freedom(knots+1 \*parameters) - number of constrains\* knots
+
+#### Example: Cubic Splines with 3 knots
+
+-   (3+1) cubic functions, each has 4 parameters
+-   3 constrains at each knots, ie. continuous, differentiable, and have continuous first derivative at each knot
+-   total degree of freedom is $4*4 - 3*3 = 7$
+
+#### Example: Natural Cubic Splines with 3 knots
+
+-   (3+1) cubic functions, each has 4 parameters
+-   for the head and tail cubic function, restricted to linear function so each free up 2 degrees of freedom $\sum^3_{i=0} \beta_ix^i \Rightarrow \beta_0 + \beta_1x$
+-   3 constrains at each knots, ie. continuous, differentiable, and have continuous first derivative at each knot
+-   total degree of freedom is $4*4 - 3*3 - 2*2 = 3$
 
 #### Example: B5
 
@@ -1508,20 +1784,20 @@ $$
 logit(P(Y\ge1|X=x)) = \alpha_0 + \alpha_1 I(x\ge 1)
 $$
 
-- This is a logistic model, and we have 4 groups ($\{x =0, x\ge 1\}\cap\{Y=0,Y\ge1\}$), and we have 2 paramteres and 2 constrains ($P(Y\ge1|X=x) + P(Y=0|X=x) = 1$) so the model is saturated.
+-   This is a logistic model, and we have 4 groups ($\{x =0, x\ge 1\}\cap\{Y=0,Y\ge1\}$), and we have 2 paramteres and 2 constrains ($P(Y\ge1|X=x) + P(Y=0|X=x) = 1$) so the model is saturated.
 
 $$
 log(\frac{P(Y=k|x=x)}{P(Y=0|X=x)})
 = \beta_{0k} + \beta_{1k}I(x=1)+\beta_{2k}I(x=2), k=1,2
 $$
 
-- This is a multinomial model, we have 9 groups(3*3), and the model have 6 parameter($\beta_{ij}$) and 3 constrains $\sum_k P(Y=k|X=x) = 1$, so the model is saturated.
+-   This is a multinomial model, we have 9 groups(3\*3), and the model have 6 parameter($\beta_{ij}$) and 3 constrains $\sum_k P(Y=k|X=x) = 1$, so the model is saturated.
 
 $$
 logit(P(Y\le k|X=x)) = \gamma_{0k} - \gamma_1 I(x=1) - \gamma_2 I(x=2), k = 0,1
 $$
 
-- This is a proportional odds model, this model cannot be saturated because it's borrowing information from the left-side of the equation.
+-   This is a proportional odds model, this model cannot be saturated because it's borrowing information from the left-side of the equation.
 
 ## Multivariate Regression
 
