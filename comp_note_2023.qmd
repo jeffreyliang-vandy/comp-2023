@@ -320,7 +320,7 @@ establishing (4.4.4).
 ```
 ### Hierarchical Model
 
-- \href{https://vanderbilt365-my.sharepoint.com/:b:/g/personal/zhuohui_liang_vanderbilt_edu/ESFMUceMOKRDkzTV2dPVhDMBZ4-15iHkKeJklYNO6Sm8XA?e=yLNMxv}{Amber's Homework 6(Pretty Bad)}
+-   \href{https://vanderbilt365-my.sharepoint.com/:b:/g/personal/zhuohui_liang_vanderbilt_edu/ESFMUceMOKRDkzTV2dPVhDMBZ4-15iHkKeJklYNO6Sm8XA?e=yLNMxv}{Amber's Homework 6(Pretty Bad)}
 
 $$
 E[X] = E[E[X|Y]] = E[E[E[X|Y,Z]]] = ...
@@ -423,8 +423,6 @@ f_{X|Y} = N\{
 \}
 $$
 ```
-
-
 #### Example exercise 4.45
 
 ```{=tex}
@@ -563,15 +561,13 @@ a bivariate normal pdf.
 ```
 ### Multinomial
 
-- \href{https://vanderbilt365-my.sharepoint.com/:b:/g/personal/zhuohui_liang_vanderbilt_edu/EcpcWjslfqFMhSFDV1acnu4BlsC8W3FYBvJXu-OGRAlYdg?e=wUYtoO}{Amber's Homework 5}
+-   \href{https://vanderbilt365-my.sharepoint.com/:b:/g/personal/zhuohui_liang_vanderbilt_edu/EcpcWjslfqFMhSFDV1acnu4BlsC8W3FYBvJXu-OGRAlYdg?e=wUYtoO}{Amber's Homework 5}
 
 ## Transformation/Location Scale Family
 
-- \href{https://vanderbilt365-my.sharepoint.com/:b:/g/personal/zhuohui_liang_vanderbilt_edu/EeDIvgbReHtEvv3cmyCIVNQBEMzJBaP6oIAeWnsE8JxqSA?e=5sb2dT}{Amber's Homework 8}
+-   \href{https://vanderbilt365-my.sharepoint.com/:b:/g/personal/zhuohui_liang_vanderbilt_edu/EeDIvgbReHtEvv3cmyCIVNQBEMzJBaP6oIAeWnsE8JxqSA?e=5sb2dT}{Amber's Homework 8}
 
-- \href{https://vanderbilt365-my.sharepoint.com/:b:/g/personal/zhuohui_liang_vanderbilt_edu/EWekEOvn5kxEuhP7a7t3sUwBnw3N9CdC4op28I5UCbhe3g?e=WaG2Sk}{Amber's Homework 7}
-
-
+-   \href{https://vanderbilt365-my.sharepoint.com/:b:/g/personal/zhuohui_liang_vanderbilt_edu/EWekEOvn5kxEuhP7a7t3sUwBnw3N9CdC4op28I5UCbhe3g?e=WaG2Sk}{Amber's Homework 7}
 
 ### Univariate Transformation
 
@@ -660,7 +656,6 @@ $$
 
 So $U \perp V$ by factorization.
 ```
-
 ```{=tex}
 (b) Find the distribution of $Z = X/(X + Y)$, where we define $Z=O$if $X+Y =0.$
 
@@ -716,6 +711,7 @@ P_Z = \frac{p}{1-p}^2 (1-p)^{1/Z}\sum_v [(1-p)^{1/Z}]^{v-1}\\
 \end{gathered}
 $$
 ```
+#### Homework7 4.19
 
 ## Order Statistics
 
@@ -1066,7 +1062,6 @@ $$
 
 HINT: Hint: For part (b) you may assume that a > 0 and establish the upper bound on P(Sn>a). Use the definition Mx(0) = lim Mx() - Mx(0) - do to show that there exists 8 >0 such that Mx(8) < 1. Use this result to define a suitable c and apply part (a). You may stop here since the result for a > 0 is all that is needed to complete parts (c) and (d). The trick to getting the upper bound on P(Sn <a) is to assume that E(X) > 0. For parts (c) and (d), apply (b) with a = 0.
 ```
-
 ## CLT
 
 #### Theorem 5.5.14 (Central Limit Theorem)
@@ -1130,8 +1125,6 @@ $$
 $$
 by an application of Lemma 2.3.14, where we set $a_n=\left(t^2 / 2\right)+n R_Y(t / \sqrt{n})$. (Note that (5.5.5) implies that $a_n \rightarrow t^2 / 2$ as $n \rightarrow \infty$.) Since $e^{t^2 / 2}$ is the mgf of the $n(0,1)$ distribution, the theorem is proved.
 ```
-
-
 ## Delta Methods
 
 -   Application: how to use delta method to get the CI of non-linear regression
@@ -1273,9 +1266,43 @@ In regression case, we have scale parameter $\alpha = X^TX$ ($Var(\hat\beta) = X
 ### MSS
 
 -   The theorem only show MSS, but does not help finding MSS
+
 -   Complete statistics help finding MSS
+
 -   \href{https://vanderbilt365.sharepoint.com/:b:/s/contemporary.statistical.inference/EZ9WY0CEUaVPuEmFoxn4clwBnSIu6etovtXibsBcNLbvQA?e=qNXZ6I}{Bob's Homework 1}
 
+-   NEED TO SHOW IF AND ONLY IF
+
+#### Example: Bob's final 1
+
+$$
+Ratio = (\frac{\theta}{1-\theta})^{x-y}(1-\theta)^{n-n'}*contant(x,y)
+$$
+
+```{=tex}
+\begin{itemize}
+\item proof of 'if':
+
+when $n = n'$ and $x=y$, all the terms are equal to 1, so a constant as a function of $\theta$
+
+\item proof of 'only if':
+
+Assuming the ratio is a constant c where $c>0$ then take the log of the ratio we have:
+
+$$
+a(log\theta - log(1-\theta)) + blog(1-\theta) = log(c)
+$$
+where $a = x-y$, and $b=n-n'$.
+
+Take the derivative with respect to $\theta$ (we want to create equation here(and also get rid of $\theta$))
+
+$$
+\frac{a}{\theta(1-\theta)}- \frac{b}{1-\theta} = 0 \Rightarrow a=b\theta
+$$
+
+This apply to all $\theta$ so we have $a=0$ and $b=0$, making $x=y$ and $n=n'$ $\blacksquare$
+\end{itemize}
+```
 \includepdf[page={8-11},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
 
 ### Ancillary Statistics
@@ -1285,6 +1312,8 @@ In regression case, we have scale parameter $\alpha = X^TX$ ($Var(\hat\beta) = X
 ### Complete Statistics
 
 -   The binomial example is useful to understand and proof completeness
+-   Exponential family has this open set thing
+-   Use complete statistics to find MVUE by lehman-sheffey
 
 \includepdf[page={13-16},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
 
@@ -1292,9 +1321,80 @@ In regression case, we have scale parameter $\alpha = X^TX$ ($Var(\hat\beta) = X
 
 ### MLE
 
+
+$$
+\hat \theta = \arg\max_\theta f(x|\theta)
+$$
+
+so we solve for 
+
+$$
+\frac{d}{d\theta} l(\hat\theta|x) = 0
+$$
+
+#### Invariance Property of MLE:
+
+**Theorem**: If $\hat \theta$ is the MLE of $\theta$, then for any function $\tau(\theta)$, the MLE of $\tau(\theta)$ is $\tau(\hat\theta)$
+
 ### Methods of Momment
 
+Given Moments $M_i$:
+
+$$
+\begin{gathered}
+M_1 = \frac{1}{n}\sum X_i^1, \mu_1 = EX^1\\
+M_2 = \frac{1}{n}\sum X_i^2, \mu_2 = EX^2\\
+...
+\end{gathered}
+$$
+
+#### Example: Normal method of moments:
+
+Given i.i.d $X_i \sim N(\theta,\sigma^2)$, we have $m_1 = \bar X$, $m_2 = \frac{1}{n} \sum X_i^2$;
+
+the first moment is $\mu_1 = \theta$ and $\mu_2 = \sigma^2+\theta^2$, hence we must solve for:
+
+$$
+\bar X = \theta, \frac{1}{n}\sum X_i^2 = \sigma^2 + \theta^2
+$$
+
+$$
+\Rightarrow \hat \theta = \bar X, \hat \sigma^2 = \frac{1}{n}\sum X_i^2 - \bar X^2 \blacksquare
+$$
+
+
+
 ### Linear Regression
+
+#### Bob's Lab MLE:
+
+For random sample $\boldsymbol{Y} = Y_1,Y_2,...$, $Y_i\sim n(\mu_i,\phi)$,
+such that
+
+$$
+l(\boldsymbol{\theta}|\boldsymbol{y}) = -n log(2\pi) - \frac{n}{2}log \phi - \frac{1}{2\phi} \sum(y_i-\mu_i)^2
+$$
+
+We have n data and n+1 parameters, so we reparameterize:
+
+With the **restriction** of $\mu_i = \beta X_i + \alpha$,
+
+$$
+l(\boldsymbol{\theta}|\boldsymbol{y}) = -n log(2\pi) - \frac{n}{2}log \phi - \frac{1}{2\phi} \sum(y_i-\beta x_i - \alpha)^2
+$$
+
+By MLE:
+
+$$
+\begin{gathered}
+\hat \alpha = \frac{\sum y_i - \beta x_i}{\sum x_i}\\
+\hat \beta = \frac{\sum x_i(y_i - \alpha)}{\sum x_i^2}
+\end{gathered}
+$$
+
+Solving we have $\hat\mu_i = \hat\alpha + \hat\beta x_i$ 
+and $\hat \phi$
+
 
 ## UMVUE
 
@@ -1307,6 +1407,8 @@ In regression case, we have scale parameter $\alpha = X^TX$ ($Var(\hat\beta) = X
 -   You mess up the derivative of the bottom and the top
 
 -   fisher information **ONLY** applied to exponential family
+
+\href{https://vanderbilt365-my.sharepoint.com/personal/zhuohui_liang_vanderbilt_edu/_layouts/15/onedrive.aspx?id=%2Fsites%2Fcontemporary%2Estatistical%2Einference%2FShared%20Documents%2FExercise%20Sets%2FES3%2FES3%20Solutions%2Epdf&listurl=https%3A%2F%2Fvanderbilt365%2Esharepoint%2Ecom%2Fsites%2Fcontemporary%2Estatistical%2Einference%2FShared%20Documents&parentview=1}{Bob's Homework 3}
 
 \includepdf[page={27-33},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
 
@@ -1349,6 +1451,18 @@ In regression case, we have scale parameter $\alpha = X^TX$ ($Var(\hat\beta) = X
 
 ### Most Powerful Test
 
+- According to Bob's note/homework, **a LRT test is most powerful of it's size if it exist for some distribution, by NP lemma**
+
+- In LRT chapter $\lambda = \frac{\sup f(x|\theta_0)}{\sup f(x|\theta)}$, where in NP lemma, $\lambda^\prime = \frac{\sup f(x|\theta_1)}{\sup f(x|\theta_0)}$, mark the difference.
+
+- The rejection region of LRT is $R = \{x: \lambda(x) \le c\},c\in(0,1)$ vs rejection rejoin in the NP lemma: $R^\prime: \frac{\sup f(x|\theta_1)}{\sup f(x|\theta_0)} > k,k>0$, inverting the ratio we will have the same rejection region
+
+- See \href{https://vanderbilt365.sharepoint.com/:b:/s/contemporary.statistical.inference/ESc9NuNBKdZCioHKKBV216ABmpGw9bYLCCK-VCA_wlZOJg?email=zhuohui.liang%40Vanderbilt.Edu&e=siQig5}{Bob's HW5}
+
+- Don't ignore Karlin-Rubin Theorem ( Direction of MLR depends on the inequality of alternative test: $\theta>\theta_0\rightarrow$ non-decreasing/increasing)
+
+- UMP is unbias(can't find a proof yet)
+
 ```{=tex}
 \todo{Need to review This part}
 \includepdf[page={62-65},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
@@ -1371,6 +1485,90 @@ In regression case, we have scale parameter $\alpha = X^TX$ ($Var(\hat\beta) = X
 
 \includepdf[page={55-59},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
 ```
+
+#### Example from c.b:
+
+```{=tex}
+\textbf{Example 8.2.2}
+
+Let $X_i \sim N(\theta,1)$, test for $H_0: \theta = \theta_0$
+
+$$
+\begin{aligned}
+\lambda(\mathbf{x}) & =\frac{(2 \pi)^{-n / 2} \exp \left[-\sum_{i=1}^{n}\left(x_{i}-\theta_{0}\right)^{2} / 2\right]}{(2 \pi)^{-n / 2} \exp \left[-\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2} / 2\right]} \\
+& =\exp \left[\left(-\sum_{i=1}^{n}\left(x_{i}-\theta_{0}\right)^{2}+\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}\right) / 2\right] .
+\end{aligned}
+$$
+
+The expression for $\lambda(\mathbf{x})$ can be simplified by noting that
+
+$$
+\sum_{i=1}^{n}\left(x_{i}-\theta_{0}\right)^{2}=\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}+n\left(\bar{x}-\theta_{0}\right)^{2}
+$$
+
+Thus the LRT statistic is
+
+$$
+\lambda(\mathbf{x})=\exp \left[-n\left(\bar{x}-\theta_{0}\right)^{2} / 2\right]
+$$
+
+An LRT is a test that rejects $H_{0}$ for small values of $\lambda(\mathbf{x})$. From (8.2.2), the rejection region, $\{\mathbf{x}: \lambda(\mathbf{x}) \leq c\}$, can be written as
+
+$$
+\left\{\mathbf{x}:\left|\bar{x}-\theta_{0}\right| \geq \sqrt{-2(\log c) / n}\right\}
+$$
+
+As $c$ ranges between 0 and $1, \sqrt{-2(\log c) / n}$ ranges between 0 and $\infty$. Thus the LRTs are just those tests that reject $H_{0}: \theta=\theta_{0}$ if the sample mean differs from the hypothesized value $\theta_{0}$ by more than a specified amount.
+
+The analysis in Example 8.2.2 is typical in that first the expression for $\lambda(\mathbf{X})$ from Definition 8.2.1 is found, as we did in (8.2.1). Then the description of the rejection region is simplified, if possible, to an expression involving a simpler statistic, $\left|\bar{X}-\theta_{0}\right|$ in the example.
+
+\textbf{Example 8.2.3 (Exponential LRT)}
+
+Let $X_{1}, \ldots, X_{n}$ be a random sample from an exponential population with pdf
+
+$$
+f(x \mid \theta)= \begin{cases}e^{-(x-\theta)} & x \geq \theta \\ 0 & x<\theta\end{cases}
+$$
+
+where $-\infty<\theta<\infty$. The likelihood function is
+
+$$
+L(\theta \mid \mathbf{x})=\left\{\begin{array}{ll}
+e^{-\Sigma x_{i}+n \theta} & \theta \leq x_{(1)} \\
+0 & \theta>x_{(1)} .
+\end{array} \quad\left(x_{(1)}=\min x_{i}\right)\right.
+$$
+
+Consider testing $H_{0}: \theta \leq \theta_{0}$ versus $H_{1}: \theta>\theta_{0}$, where $\theta_{0}$ is a value specified by the experimenter. Clearly $L(\theta \mid \mathbf{x})$ is an increasing function of $\theta$ on $-\infty<\theta \leq x_{(1)}$. Thus, the denominator of $\lambda(\mathbf{x})$, the unrestricted maximum of $L(\theta \mid \mathbf{x})$, is
+
+$$
+L\left(x_{(1)} \mid \mathbf{x}\right)=e^{-\Sigma x_{i}+n x_{(1)}} .
+$$
+
+If $x_{(1)} \leq \theta_{0}$, the numerator of $\lambda(\mathbf{x})$ is also $L\left(x_{(1)} \mid \mathbf{x}\right)$. But since we are maximizing $L(\theta \mid \mathbf{x})$ over $\theta \leq \theta_{0}$, the numerator of $\lambda(\mathbf{x})$ is $L\left(\theta_{0} \mid \mathbf{x}\right)$ if $x_{(1)}>\theta_{0}$. Therefore, the likelihood ratio test statistic is
+
+$$
+\lambda(\mathbf{x})= \begin{cases}1 & x_{(1)} \leq \theta_{0} \\ e^{-n\left(x_{(1)}-\theta_{0}\right)} & x_{(1)}>\theta_{0}\end{cases}
+$$
+
+A graph of $\lambda(\mathbf{x})$ is shown in Figure 8.2.1. An LRT, a test that rejects $H_{0}$ if $\lambda(\mathbf{X}) \leq c$, is 8 test with rejection region $\left\{\mathbf{x}: x_{(1)} \geq \theta_{0}-\frac{\log c}{n}\right\}$. Note that the rejection region depends on the sample only through the sufficient statistic $X_{(1)}$. That this is generally the case will be seen in Theorem 8.2.4.
+
+Example 8.2.3 again illustrates the point, expressed in Section 7.2.2, that differentiation of the likelihood function is not the only method of finding an MLE. In Example 8.2.3, $L(\theta \mid \mathbf{x})$ is not differentiable at $\theta=x_{(1)}$.
+
+\textbf{Example 8.2.5 (LRT and sufficiency)}
+
+In Example 8.2.2, we can recognize that $\bar{X}$ is a sufficient statistic for $\theta$. We could use the likelihood function associated with $\bar{X}\left(\bar{X} \sim \mathrm{n}\left(\theta, \frac{1}{n}\right)\right)$ to more easily reach the conclusion that a likelihood ratio test of $H_{0}: \theta=\theta_{0}$ versus $H_{1}: \theta \neq \theta_{0}$ rejects $H_{0}$ for large values of $\left|\bar{X}-\theta_{0}\right|$.
+
+Similarly in Example 8.2.3, $X_{(1)}=\min X_{i}$ is a sufficient statistic for $\theta$. The likelihood function of $X_{(1)}$ (the pdf of $X_{(1)}$ ) is
+
+$$
+L^{*}\left(\theta \mid x_{(1)}\right)= \begin{cases}n e^{-n\left(x_{(1)}-\theta\right)} & \theta \leq x_{(1)} \\ 0 & \theta>x_{(1)} .\end{cases}
+$$
+
+This likelihood could also be used to derive the fact that a likelihood ratio test of $H_{0}: \theta \leq \theta_{0}$ versus $H_{1}: \theta>\theta_{0}$ rejects $H_{0}$ for large values of $X_{(1)}$.
+```
+
+
 ### Large Sample Test Method
 
 \includepdf[page={70-73},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
@@ -1387,15 +1585,15 @@ In regression case, we have scale parameter $\alpha = X^TX$ ($Var(\hat\beta) = X
 
 -   How to find the coverage probablity
 
-\includepdf[page={39-41},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+\includepdf[page={42-44},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
 
 ### Unbiased CI
 
-\includepdf[page={42},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+\includepdf[page={45},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
 
-### Find CI by Pivoting
+### Find CI by Pivoting CDF
 
--   More example in homework4, that shit hard
+-   More example in \href{https://vanderbilt365-my.sharepoint.com/:b:/g/personal/zhuohui_liang_vanderbilt_edu/Ebyd8nV9j4lEodyl8A5ReV0BICdwofUuyEzgBxnMXUETrw?e=V4YKut}{homework4}, that shit hard
 -   Need more example
 -   Example 7.7 is good to learn how to find pivot function
 
@@ -1413,13 +1611,13 @@ In regression case, we have scale parameter $\alpha = X^TX$ ($Var(\hat\beta) = X
 
 -   More Example on Mathematics Statistics
 -   This is related to \[Delta Method\]
+-   Example 9.1 is good example of LRT
 
-\includepdf[page={74-75},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
+\includepdf[page={74-76},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
 
 ## P-value
 
 \includepdf[page={78-79},pagecommand={\thispagestyle{fancy}}]{/Users/liang/Library/CloudStorage/GoogleDrive-jeffreyliang1995@gmail.com/My Drive/GoodNotes/Phd.2022 Spring/Note_for_Inference.pdf}
-
 
 ## One Sample Testing
 
@@ -1817,11 +2015,15 @@ $$
 
 # Distribution
 
-## Discribe
+## Discrete
 
 ### Poisson
 
 Note: $Y\sim Poi$, $aY \not \sim Poi$ because Y is discrete.
+
+### Geometric
+
+Note: $\underbrace{p(1-p)^{x-1}}_{\mbox{n trials}}$ or $\underbrace{p(1-p)^{x}}_{n+1\mbox{ trials}}$
 
 # Simulation
 
